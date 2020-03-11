@@ -1,1 +1,1 @@
-alert('connected!')
+import './styles/styles.css';
