@@ -48,6 +48,7 @@ export default class Player {
     this.dx = mid(-this.dxMax, this.dx, this.dxMax);
 
     this.spriteObj.x += this.dx;
+    this.keepInBounds();
   }
 
   moveLeftAction() {
@@ -58,5 +59,9 @@ export default class Player {
     this.dx += this.acceleration;
   }
 
+  keepInBounds() {
+    const { x, y, width } = this.spriteObj;
+    if (x <= 0) this.spriteObj.x = 0;
+    if (x + width >= GAME_WIDTH) this.spriteObj.x = GAME_WIDTH - this.spriteObj.width;
   }
 }
