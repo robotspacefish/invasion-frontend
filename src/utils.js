@@ -3,3 +3,5 @@ function mid(min, max, num) {
   if (num <= min) return min;
   return num;
 }
+
+export { mid };

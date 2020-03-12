@@ -1,6 +1,7 @@
 import SpriteObject from './spriteObject';
 import Spritesheet from './assets/invasion_sheet.png';
 import { GAME_WIDTH, GAME_HEIGHT } from './index';
+import { mid } from './utils';
 
 export default class Player {
   constructor() {
