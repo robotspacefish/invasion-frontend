@@ -24,7 +24,7 @@ window.addEventListener('keydown', (e) => {
   // spacebar
   if (e.key === "ArrowUp") game.player.shoot = true;
 
-  e.preventDefault(); // prevent scrolling browser
+  // e.preventDefault(); // prevent scrolling browser
 });
 
 
