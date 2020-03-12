@@ -17,6 +17,17 @@ function gameLoop(timeStamp) {
   requestAnimationFrame(gameLoop);
 }
 
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') game.player.moveRight = true;
+  if (e.key === 'ArrowLeft') game.player.moveLeft = true;
+
+  // spacebar
+  if (e.key === "ArrowUp") game.player.shoot = true;
+
+  e.preventDefault(); // prevent scrolling browser
+});
+
+
 requestAnimationFrame(gameLoop);
 
 export { GAME_WIDTH, GAME_HEIGHT };
