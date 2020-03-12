@@ -6,6 +6,16 @@ import { mid } from './utils';
 export default class Player {
   constructor() {
     this.spriteObj = this.initSprite();
+    this.dx = 0;
+    this.dxMax = 35; // speed limit
+    this.acceleration = 2; // how much is added to movement
+    this.moveLeft = false;
+    this.moveRight = false;
+    this.shoot = false;
+  }
+
+  static get friction() {
+    return 0.95; // slow player movement
   }
 
   initSprite() {
