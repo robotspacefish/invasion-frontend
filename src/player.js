@@ -29,6 +29,34 @@ export default class Player {
   }
 
   update() {
+    this.dx *= Player.friction;
+
+    if (this.moveLeft && !this.moveRight) {
+      this.moveLeftAction();
+      this.moveLeft = false;
+    }
+
+    if (this.moveRight && !this.moveLeft) {
+      this.moveRightAction();
+      this.moveRight = false;
+    }
+    if (this.shoot) {
+      this.shootAction();
+      this.shoot = false;
+    }
+
+    this.dx = mid(-this.dxMax, this.dx, this.dxMax);
+
+    this.spriteObj.x += this.dx;
+  }
+
+  moveLeftAction() {
+    this.dx -= this.acceleration;
+  }
+
+  moveRightAction() {
+    this.dx += this.acceleration;
+  }
 
   }
 }
