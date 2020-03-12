@@ -9,6 +9,10 @@ main {
   align-items: center;
 }
 
+#screen-bg {
+  background: url('../assets/space_bg.png');
+}
+
 #screen {
   border: 1px solid black;
 }
