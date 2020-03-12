@@ -7,12 +7,12 @@ const game = new Game(GAME_WIDTH, GAME_HEIGHT);
 let lastTime = 0;
 
 function gameLoop(timeStamp) {
-  let delta = timeStamp - lastTime;
+  let deltaTime = timeStamp - lastTime;
   lastTime = timeStamp;
 
   ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
   game.draw(ctx);
-  game.update();
+  game.update(deltaTime);
 
   requestAnimationFrame(gameLoop);
 }
