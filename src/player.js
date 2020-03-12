@@ -19,7 +19,7 @@ export default class Player {
   }
 
   initSprite() {
-    return new SpriteObject(3, 0, 218, 164, 0, 0, 218 / 2, 164 / 2, Spritesheet);
+    return new SpriteObject(3, 0, 218, 164, (GAME_WIDTH / 2) - (218 / 2 / 2), GAME_HEIGHT - 150, 218 / 2, 164 / 2, Spritesheet);
   }
 
   draw(ctx) {
