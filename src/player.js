@@ -1,11 +1,12 @@
+import GameObject from './gameObject';
 import SpriteObject from './spriteObject';
-import Spritesheet from './assets/invasion_sheet.png';
 import { GAME_WIDTH, GAME_HEIGHT } from './index';
 import { mid } from './utils';
 
-export default class Player {
+export default class Player extends GameObject {
   constructor() {
-    this.spriteObj = this.initSprite();
+    super();
+    this.spriteObj = new SpriteObject(3, 0, 218, 164, (GAME_WIDTH / 2) - (218 / 2 / 2), GAME_HEIGHT - 150, 218 / 2, 164 / 2);
     this.dx = 0;
     this.dxMax = 25; // speed limit
     this.acceleration = 2; // how much is added to movement
@@ -18,15 +19,11 @@ export default class Player {
     return 0.98; // slow player movement
   }
 
-  initSprite() {
-    return new SpriteObject(3, 0, 218, 164, (GAME_WIDTH / 2) - (218 / 2 / 2), GAME_HEIGHT - 150, 218 / 2, 164 / 2);
-  }
+  // draw(ctx) {
+  //   const { sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, image } = this.spriteObj;
+  //   ctx.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height);
 
-  draw(ctx) {
-    const { sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, image } = this.spriteObj;
-    ctx.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height);
-
-  }
+  // }
 
   update() {
     this.dx *= Player.friction;
@@ -58,6 +55,15 @@ export default class Player {
   moveRightAction() {
     this.dx += this.acceleration;
   }
+
+  shootAction() {
+    console.log('shooting')
+  }
+
+  // isInBounds() {
+  //   const { x, y, width } = this.spriteObj;
+  //   return x > 0 && x + width < GAME_WIDTH;
+  // }
 
   keepInBounds() {
     const { x, y, width } = this.spriteObj;
