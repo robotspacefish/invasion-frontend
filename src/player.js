@@ -7,7 +7,7 @@ export default class Player {
   constructor() {
     this.spriteObj = this.initSprite();
     this.dx = 0;
-    this.dxMax = 35; // speed limit
+    this.dxMax = 25; // speed limit
     this.acceleration = 2; // how much is added to movement
     this.moveLeft = false;
     this.moveRight = false;
@@ -15,11 +15,11 @@ export default class Player {
   }
 
   static get friction() {
-    return 0.95; // slow player movement
+    return 0.98; // slow player movement
   }
 
   initSprite() {
-    return new SpriteObject(3, 0, 218, 164, (GAME_WIDTH / 2) - (218 / 2 / 2), GAME_HEIGHT - 150, 218 / 2, 164 / 2, Spritesheet);
+    return new SpriteObject(3, 0, 218, 164, (GAME_WIDTH / 2) - (218 / 2 / 2), GAME_HEIGHT - 150, 218 / 2, 164 / 2);
   }
 
   draw(ctx) {
