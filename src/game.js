@@ -14,10 +14,7 @@ export default class Game {
   }
 
   update() {
-    if (Enemy.shouldSpawn()) {
-      // TODO adjust spawn spacing and timing
-      setTimeout(Enemy.spawn(), 3000)
-    }
+    if (Enemy.shouldSpawn()) Enemy.spawn();
     GameObject.all.forEach(obj => obj.update(Game.gravity));
   }
 
