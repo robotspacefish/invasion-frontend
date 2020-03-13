@@ -13,17 +13,18 @@ export default class Enemy extends GameObject {
   }
 
   static get frequency() {
-    return 0.95;
+    return 0.003;
   }
 
   update(gravity) {
-    this.spriteObj.y += gravity * this.speed;
+    // this.spriteObj.y += gravity * this.speed;
+    this.spriteObj.y += gravity;
 
     // if (this.spriteObj.y > GAME_HEIGHT) Enemy.remove();
   }
 
   static shouldSpawn() {
-    return Math.random() > Enemy.frequency
+    return Math.random() < Enemy.frequency
   }
 
   static spawn() {
