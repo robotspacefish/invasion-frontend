@@ -7,6 +7,9 @@ export default class Game {
     this.player = new Player();
   }
 
+  static get gravity() {
+    return 0.75;
+  }
 
   update() {
     this.player.update();
