@@ -4,6 +4,7 @@ import Game from './game';
 const ctx = document.getElementById('screen').getContext('2d');
 const GAME_WIDTH = 800, GAME_HEIGHT = 600;
 const game = new Game(GAME_WIDTH, GAME_HEIGHT);
+
 let lastTime = 0;
 
 function gameLoop(timeStamp) {
@@ -26,7 +27,6 @@ window.addEventListener('keydown', (e) => {
 
   // e.preventDefault(); // prevent scrolling browser
 });
-
 
 requestAnimationFrame(gameLoop);
 
