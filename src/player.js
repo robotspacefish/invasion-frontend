@@ -6,7 +6,7 @@ import { mid } from './utils';
 export default class Player extends GameObject {
   constructor() {
     super();
-    this.spriteObj = new SpriteObject(3, 0, 218, 164, (GAME_WIDTH / 2) - (218 / 2 / 2), GAME_HEIGHT - 150, 218 / 2, 164 / 2);
+    this.spriteObj = new SpriteObject(0, 0, 218, 164, (GAME_WIDTH / 2) - (218 / 2 / 2), GAME_HEIGHT - 150, 218 / 2, 164 / 2);
     this.dx = 0;
     this.dxMax = 25; // speed limit
     this.acceleration = 2; // how much is added to movement
