@@ -1,5 +1,7 @@
 import Player from './player';
-import { spritesheet } from './assets/invasion_sheet.png';
+import Enemy from './enemy';
+import GameObject from './gameObject';
+
 export default class Game {
   constructor(width, height) {
     this.width = width;
@@ -12,12 +14,14 @@ export default class Game {
   }
 
   update() {
-    this.player.update();
-    Enemy.all.forEach(enemy => enemy.update(Game.gravity));
+    if (Enemy.shouldSpawn()) {
+      // TODO adjust spawn spacing and timing
+      setTimeout(Enemy.spawn(), 3000)
+    }
+    GameObject.all.forEach(obj => obj.update(Game.gravity));
   }
 
   draw(ctx) {
-    this.player.draw(ctx);
-    Enemy.all.forEach(enemy => enemy.draw(ctx));
+    GameObject.all.forEach(obj => obj.draw(ctx));
   }
 }
