@@ -4,9 +4,9 @@ import { GAME_WIDTH, GAME_HEIGHT } from './index';
 import Game from "./game";
 
 export default class Enemy extends GameObject {
-  constructor(speed) {
+  constructor(speed = 0) {
     super();
-    this.spriteObj = new SpriteObject(3, 176, 218, 169, (GAME_WIDTH / 2) - (218 / 2 / 2), -200, 218 / 2, 169 / 2);
+    this.spriteObj = new SpriteObject(3, 176, 218, 169, generateRandomNumber(0, GAME_WIDTH - 169), -200, 218 / 2, 169 / 2);
     this.speed = speed;
     Enemy.all.push(this);
   }
