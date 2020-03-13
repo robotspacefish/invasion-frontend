@@ -20,7 +20,7 @@ export default class Enemy extends GameObject {
     // this.spriteObj.y += gravity * this.speed;
     this.spriteObj.y += gravity;
 
-    // if (this.spriteObj.y > GAME_HEIGHT) Enemy.remove();
+    if (this.spriteObj.y > GAME_HEIGHT + 10) GameObject.remove(this);
   }
 
   static shouldSpawn() {
