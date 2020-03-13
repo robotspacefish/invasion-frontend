@@ -31,3 +31,7 @@ export default class Enemy extends GameObject {
   }
 
 }
+
+setInterval(() => {
+  Enemy.spawn();
+}, 1000)

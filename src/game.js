@@ -10,7 +10,7 @@ export default class Game {
   }
 
   update() {
-    if (Enemy.shouldSpawn()) Enemy.spawn();
+    // if (Enemy.shouldSpawn()) Enemy.spawn();
     GameObject.all.forEach(obj => obj.update());
   }
 
