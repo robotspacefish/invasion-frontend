@@ -9,13 +9,9 @@ export default class Game {
     this.player = new Player();
   }
 
-  static get gravity() {
-    return 0.75;
-  }
-
   update() {
     if (Enemy.shouldSpawn()) Enemy.spawn();
-    GameObject.all.forEach(obj => obj.update(Game.gravity));
+    GameObject.all.forEach(obj => obj.update());
   }
 
   draw(ctx) {
