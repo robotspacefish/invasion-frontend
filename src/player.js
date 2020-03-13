@@ -6,13 +6,26 @@ import { mid } from './utils';
 export default class Player extends GameObject {
   constructor() {
     super();
-    this.spriteObj = new SpriteObject(0, 0, 218, 164, (GAME_WIDTH / 2) - (218 / 2 / 2), GAME_HEIGHT - 150, 218 / 2, 164 / 2);
+    this.spriteObj = new SpriteObject(Player.initObj());
     this.dx = 0;
     this.dxMax = 25; // speed limit
     this.acceleration = 2; // how much is added to movement
     this.moveLeft = false;
     this.moveRight = false;
     this.shoot = false;
+  }
+
+  static initObj() {
+    return {
+      sourceX: 0,
+      sourceY: 0,
+      sourceWidth: 218,
+      sourceHeight: 164,
+      x: (GAME_WIDTH / 2) - (218 / 2 / 2),
+      y: GAME_HEIGHT - 150,
+      width: 218 / 2,
+      height: 164 / 2
+    }
   }
 
   static get friction() {

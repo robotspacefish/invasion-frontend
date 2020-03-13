@@ -1,7 +1,7 @@
 import Spritesheet from './assets/invasion_sheet.png';
 
 export default class SpriteObject {
-  constructor(sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height) {
+  constructor({ sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, spritesheet = sprites }) {
     this.sourceX = sourceX;
     this.sourceY = sourceY;
     this.sourceWidth = sourceWidth;
