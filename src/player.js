@@ -32,12 +32,6 @@ export default class Player extends GameObject {
     return 0.98; // slow player movement
   }
 
-  // draw(ctx) {
-  //   const { sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, image } = this.spriteObj;
-  //   ctx.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height);
-
-  // }
-
   update() {
     this.dx *= Player.friction;
 
