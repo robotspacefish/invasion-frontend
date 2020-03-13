@@ -13,9 +13,11 @@ export default class Game {
 
   update() {
     this.player.update();
+    Enemy.all.forEach(enemy => enemy.update(Game.gravity));
   }
 
   draw(ctx) {
     this.player.draw(ctx);
+    Enemy.all.forEach(enemy => enemy.draw(ctx));
   }
 }
