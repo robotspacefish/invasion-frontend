@@ -29,6 +29,8 @@ export default class Enemy extends GameObject {
   }
 
   update() {
+    super.update();
+
     this.spriteObj.y += this.speed;
 
     if (this.spriteObj.y > GAME_HEIGHT + 10) GameObject.remove(this);

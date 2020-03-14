@@ -41,6 +41,7 @@ export default class BulletObject extends GameObject {
   }
 
   update() {
+    super.update();
     if (this.type === "playerBullets") {
       this.x -= BulletObject.speed;
     }

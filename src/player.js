@@ -37,6 +37,7 @@ export default class Player extends GameObject {
   }
 
   update() {
+    super.update();
     this.dx *= Player.friction;
 
     if (this.moveLeft && !this.moveRight) {
