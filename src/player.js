@@ -74,11 +74,6 @@ export default class Player extends GameObject {
     this.shootSound.play();
   }
 
-  // isInBounds() {
-  //   const { x, y, width } = this.spriteObj;
-  //   return x > 0 && x + width < GAME_WIDTH;
-  // }
-
   keepInBounds() {
     const { x, y, width } = this.spriteObj;
     if (x <= 0) this.spriteObj.x = 0;
