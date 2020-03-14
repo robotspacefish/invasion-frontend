@@ -26,8 +26,8 @@ export default class BulletObject extends GameObject {
         sheetWidth: 1032,
         sheetHeight: 896,
         spritesheet: waves,
-        x: shooter.x + (shooter.width / 2),
-        y: shooter.y
+        x: shooter.x + 224 / 2 - shooter.width,
+        y: 450 - 344 / 2
       }
     }
     // else if (type === "enemy") {
