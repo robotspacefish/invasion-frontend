@@ -13,10 +13,10 @@ export default class GameObject {
 
   hasCollided(obj) {
     const { x, y, width, height } = this.spriteObj;
-    return x + width > obj.x &&
-      x < obj.x + obj.width &&
-      y < obj.y + obj.height &&
-      y + height > obj.y;
+    return x + width > obj.spriteObj.x &&
+      x < obj.spriteObj.x + obj.spriteObj.width &&
+      y + height > obj.spriteObj.y &&
+      y < obj.spriteObj.y + obj.spriteObj.height;
   }
 
   canCollide(obj) {
