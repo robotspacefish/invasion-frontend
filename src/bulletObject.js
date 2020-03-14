@@ -7,7 +7,6 @@ export default class BulletObject extends GameObject {
     super();
     this.type = type;
     this.spriteObj = this.init(shooter)
-    // BulletObject.all.push(this);
   }
 
   init(shooter) {
@@ -46,6 +45,8 @@ export default class BulletObject extends GameObject {
       this.x -= BulletObject.speed;
     }
     this.spriteObj.animate();
+
+    if (this.collided) GameObject.remove(this);
 
     if (this.spriteObj.currentFrame === this.spriteObj.frameCount) {
       GameObject.remove(this);
