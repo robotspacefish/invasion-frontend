@@ -29,11 +29,11 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|jpg|wav|mp3)$/i,
         use: [
           'file-loader',
         ],
-      },
+      }
     ]
   },
   devtool: 'cheap-module-eval-source-map',
