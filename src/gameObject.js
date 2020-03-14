@@ -28,6 +28,13 @@ export default class GameObject {
       (pType === "playerBullet" && oType === "enemy")
   }
 
+  handleCollision(obj) {
+    console.log('collision detected')
+    // todo explosions, points, etc
+    // GameObject.remove(this); // todo put back after debugging
+    GameObject.remove(obj);
+  }
+
   checkForCollision() {
     let otherObjects = [];
     if (this.type === "playerBullet") {
