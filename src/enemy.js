@@ -18,14 +18,14 @@ export default class Enemy extends GameObject {
       sourceWidth: 218,
       sourceHeight: 169,
       x: generateRandomNumber(0, GAME_WIDTH - 169),
-      y: -200,
+      y: -170,
       width: 218 / 2,
       height: 169 / 2
     }
   }
 
   static get frequency() {
-    return 0.003;
+    return 0.005;
   }
 
   update() {
