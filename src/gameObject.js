@@ -7,6 +7,7 @@ export default class GameObject {
 
   static remove(objToDelete) {
     GameObject.all = GameObject.all.filter(gameObj => {
+      if (JSON.stringify(gameObj) !== JSON.stringify(objToDelete)) console.log('removing', objToDelete.type, GameObject.enemyCount, " left") // DEBUG
       return JSON.stringify(gameObj) !== JSON.stringify(objToDelete);
     });
   }
