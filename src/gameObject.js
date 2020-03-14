@@ -28,6 +28,18 @@ export default class GameObject {
       (pType === "playerBullet" && oType === "enemy")
   }
 
+  checkForCollision() {
+    let otherObjects = [];
+    if (this.type === "playerBullet") {
+      otherObjects = GameObject.all.filter(o => o.type === "enemy");
+    } else if (this.type === "player") {
+      otherObjects = GameObject.all.filter(o => o.type === "enemy" || o.type === "enemyBullet");
+    }
+
+    otherObjects.forEach(o => {
+      if (this.hasCollided(o)) this.handleCollision(o);
+    })
+  }
   draw(ctx) {
     const { sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, image } = this.spriteObj;
     ctx.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height);
