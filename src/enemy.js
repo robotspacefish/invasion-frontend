@@ -41,7 +41,7 @@ export default class Enemy extends GameObject {
   }
 
   static spawn() {
-    new Enemy(generateRandomNumber(0.5, 1.2))
+    new Enemy();
   }
 
 }
