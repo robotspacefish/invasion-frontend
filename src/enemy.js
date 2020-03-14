@@ -2,6 +2,7 @@ import GameObject from './gameObject';
 import SpriteObject from "./spriteObject";
 import { GAME_WIDTH, GAME_HEIGHT } from './index';
 import { generateRandomNumber } from './utils';
+import ExplosionObject from './explosionObject';
 
 export default class Enemy extends GameObject {
   constructor(speed = 0.45) {
@@ -33,6 +34,11 @@ export default class Enemy extends GameObject {
 
     this.spriteObj.y += this.speed;
 
+    if (this.collided) {
+      new ExplosionObject(this);
+      GameObject.remove(this);
+    };
+
     if (this.spriteObj.y > GAME_HEIGHT + 10) GameObject.remove(this);
   }
 
@@ -46,6 +52,6 @@ export default class Enemy extends GameObject {
 
 }
 
-setInterval(() => {
-  Enemy.spawn();
-}, 1000)
+// setInterval(() => {
+//   Enemy.spawn();
+// }, 1000)
