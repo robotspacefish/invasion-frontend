@@ -11,6 +11,10 @@ export default class GameObject {
     });
   }
 
+  static get enemyCount() {
+    return GameObject.all.filter(o => o.type === "enemy").length
+  }
+
   hasCollided(obj) {
     const { x, y, width, height } = this.spriteObj;
     return x + width > obj.spriteObj.x &&
