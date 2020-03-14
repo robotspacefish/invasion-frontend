@@ -1,4 +1,5 @@
 import GameObject from './gameObject';
+import BulletObject from './bulletObject';
 import SpriteObject from './spriteObject';
 import { GAME_WIDTH, GAME_HEIGHT } from './index';
 import { mid } from './utils';
@@ -64,7 +65,8 @@ export default class Player extends GameObject {
   }
 
   shootAction() {
-    console.log('shooting')
+    const { x, y, width, height } = this.spriteObj;
+    new BulletObject("player", { x, y, width, height });
   }
 
   // isInBounds() {
