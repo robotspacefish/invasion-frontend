@@ -1,13 +1,13 @@
 export default class GameObject {
   static all = [];
+
   constructor() {
     GameObject.all.push(this);
   }
 
-  static remove(obj) {
+  static remove(objToDelete) {
     GameObject.all = GameObject.all.filter(gameObj => {
-      return gameObj.spriteObj.x !== obj.spriteObj.x &&
-        gameObj.spriteObj.y !== obj.spriteObj.y;
+      return JSON.stringify(gameObj) !== JSON.stringify(objToDelete);
     });
 
   }
