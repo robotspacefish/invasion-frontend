@@ -3,6 +3,7 @@ import BulletObject from './bulletObject';
 import SpriteObject from './spriteObject';
 import { GAME_WIDTH, GAME_HEIGHT } from './index';
 import { mid } from './utils';
+import bark from './assets/audio/dog-bark-3.mp3';
 
 export default class Player extends GameObject {
   constructor() {
@@ -14,6 +15,7 @@ export default class Player extends GameObject {
     this.moveLeft = false;
     this.moveRight = false;
     this.shoot = false;
+    this.shootSound = new Audio(bark);
   }
 
   static initObj() {
@@ -67,6 +69,7 @@ export default class Player extends GameObject {
   shootAction() {
     const { x, y, width, height } = this.spriteObj;
     new BulletObject("player", { x, y, width, height });
+    this.shootSound.play();
   }
 
   // isInBounds() {
