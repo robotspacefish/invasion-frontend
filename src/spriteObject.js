@@ -1,4 +1,4 @@
-import Spritesheet from './assets/invasion_sheet.png';
+import sprites from './assets/invasion_sheet.png';
 
 export default class SpriteObject {
   constructor({ sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, spritesheet = sprites }) {
@@ -11,6 +11,6 @@ export default class SpriteObject {
     this.width = width;
     this.height = height;
     this.image = new Image();
-    this.image.src = Spritesheet;
+    this.image.src = spritesheet;
   }
 }
