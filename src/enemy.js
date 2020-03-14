@@ -8,6 +8,7 @@ export default class Enemy extends GameObject {
     super();
     this.spriteObj = new SpriteObject(Enemy.initObj());
     this.speed = speed;
+    this.type = "enemy"
   }
 
   static initObj() {

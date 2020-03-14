@@ -12,7 +12,7 @@ export default class BulletObject extends GameObject {
 
   init(shooter) {
     let obj = {};
-    if (this.type === "player") {
+    if (this.type === "playerBullet") {
       obj = {
         sourceX: 0,
         sourceY: 0,
@@ -41,7 +41,7 @@ export default class BulletObject extends GameObject {
   }
 
   update() {
-    if (this.type === "player") {
+    if (this.type === "playerBullets") {
       this.x -= BulletObject.speed;
     }
     this.spriteObj.animate();
