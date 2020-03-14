@@ -16,6 +16,7 @@ export default class Player extends GameObject {
     this.moveRight = false;
     this.shoot = false;
     this.shootSound = new Audio(bark);
+    this.type = "player"
   }
 
   static initObj() {
@@ -68,7 +69,7 @@ export default class Player extends GameObject {
 
   shootAction() {
     const { x, y, width, height } = this.spriteObj;
-    new BulletObject("player", { x, y, width, height });
+    new BulletObject("playerBullet", { x, y, width, height });
     this.shootSound.play();
   }
 
