@@ -1,6 +1,5 @@
 import './styles/styles.css';
 import Game from './game';
-
 const ctx = document.getElementById('screen').getContext('2d');
 const GAME_WIDTH = 800, GAME_HEIGHT = 600;
 const game = new Game(GAME_WIDTH, GAME_HEIGHT);
@@ -21,9 +20,7 @@ function gameLoop(timeStamp) {
 window.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') game.player.moveRight = true;
   if (e.key === 'ArrowLeft') game.player.moveLeft = true;
-
-  // spacebar
-  if (e.key === "ArrowUp") game.player.shoot = true;
+  if (e.code === "Space") game.player.shoot = true;
 
   // e.preventDefault(); // prevent scrolling browser
 });
