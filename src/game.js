@@ -9,8 +9,16 @@ export default class Game {
     this.player = new Player();
   }
 
+  static get enemiesOnScreenLimit() {
+    return 5;
+  }
+
   update() {
-    // if (Enemy.shouldSpawn()) Enemy.spawn();
+    console.log(GameObject.all.length)
+    if (GameObject.enemyCount <= Game.enemiesOnScreenLimit && Enemy.shouldSpawn()) {
+      Enemy.spawn();
+    }
+
     GameObject.all.forEach(obj => obj.update());
   }
 
