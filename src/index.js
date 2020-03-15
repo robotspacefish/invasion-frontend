@@ -22,7 +22,7 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') game.player.moveLeft = true;
   if (e.code === "Space") game.player.shoot = true;
 
-  // e.preventDefault(); // prevent scrolling browser
+  e.preventDefault(); // prevent scrolling browser
 });
 
 requestAnimationFrame(gameLoop);
