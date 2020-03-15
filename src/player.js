@@ -18,6 +18,7 @@ export default class Player extends GameObject {
     this.shootSound = new Audio(bark);
     this.type = "player";
     this.points = 0;
+    this.scoreBar = document.getElementById('score-bar')
   }
 
   static initObj() {
@@ -39,7 +40,7 @@ export default class Player extends GameObject {
 
   addPoint() {
     this.points++;
-    console.log(this.points);
+    this.renderScore();
   }
 
   update() {
@@ -84,5 +85,9 @@ export default class Player extends GameObject {
     const { x, y, width } = this.spriteObj;
     if (x <= 0) this.spriteObj.x = 0;
     if (x + width >= GAME_WIDTH) this.spriteObj.x = GAME_WIDTH - this.spriteObj.width;
+  }
+
+  renderScore() {
+    this.scoreBar.innerHTML = this.points;
   }
 }
