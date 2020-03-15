@@ -9,12 +9,11 @@ export default class Game {
     this.width = width;
     this.height = height;
     this.player = new Player();
-    this.player.renderScore();
     this.container = document.getElementById('game-content');
     this.mode = "title";
     this.screens = this.initScreens();
     this.ctx;
-
+    this.shouldUpdateUI = false;
   }
 
   static get enemiesOnScreenLimit() {
@@ -37,7 +36,7 @@ export default class Game {
       GameObject.all.forEach(obj => obj.update());
 
       if (this.player.isHit) {
-        alert('game over')
+        console.log('game over')
         // game over
         // show score
         // allow player to enter name
@@ -50,13 +49,18 @@ export default class Game {
     if (this.mode === "play") {
       GameObject.all.forEach(obj => obj.draw(this.ctx));
     }
+  }
 
+  static renderScore(points) {
+    document.getElementById('score-bar').innerHTML = points;
   }
 
   renderCanvas() {
     this.container.innerHTML = `
       <div class="ui">
-        <div id="score-bar"></div>
+        <div id="score-bar">
+          ${this.player.points}
+        </div>
       </div>
       <div id="screen-bg">
         <canvas id="screen" width="800" height="600"></canvas>
@@ -69,4 +73,9 @@ export default class Game {
   setContext() {
     this.ctx = document.getElementById('screen').getContext('2d');
   }
+
+  // setScoreBar() {
+  //   debugger
+  //   this.scoreBar = document.getElementById('score-bar');
+  // }
 }

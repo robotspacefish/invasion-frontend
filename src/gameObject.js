@@ -1,4 +1,5 @@
 import { GAME_HEIGHT } from "./index";
+import Game from "./game";
 
 export default class GameObject {
   static all = [];
@@ -48,6 +49,7 @@ export default class GameObject {
     const player = this.getPlayerObj();
     if (this.type === "playerBullet") {
       player.addPoint();
+      Game.renderScore(player.points);
     }
 
     if (this.type === "player") {
