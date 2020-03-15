@@ -8,24 +8,10 @@ export default class ExplosionObject extends GameObject {
     super();
     this.type = "explosion";
     this.spriteObj = this.init(explodedObject);
-    console.log(`
-      explosion:
-        x: ${this.spriteObj.x},
-        y: ${this.spriteObj.y},
-        w: ${this.spriteObj.width},
-        h: ${this.spriteObj.height}
-      ----------------------------
-      enemy:
-        x: ${explodedObject.spriteObj.x},
-        y: ${explodedObject.spriteObj.y},
-        w: ${this.spriteObj.width},
-        h: ${explodedObject.spriteObj.height}
-    `)
   }
 
   init(explodedObject) {
     const { x, y, height, width } = explodedObject.spriteObj;
-    debugger
     return new AnimatedSpriteObject({
       sourceX: 0,
       sourceY: 0,
