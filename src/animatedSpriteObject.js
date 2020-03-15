@@ -16,7 +16,7 @@ export default class AnimatedSpriteObject extends SpriteObject {
   animate() {
     this.count++
 
-    if (this.count >= this.delay) {
+    if (this.count === this.delay) {
 
       this.sourceX = Math.floor(this.currentFrame % this.columns) * this.sourceWidth;
       this.sourceY = Math.floor(this.currentFrame / this.columns) * this.sourceHeight;
