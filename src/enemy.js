@@ -12,8 +12,9 @@ export default class Enemy extends GameObject {
     this.spriteObj = new SpriteObject(Enemy.initObj(spawnX));
     this.speed = speed;
     this.type = "enemy"
-    this.count = 0;  // fire every time count hits countLimit
-    this.countLimit = 150;
+    this.tickCount = 0;
+    this.tickCountLimit = 70;
+    this.canShoot = true;
   }
 
   static initObj(spawnX) {
@@ -34,23 +35,27 @@ export default class Enemy extends GameObject {
     return 0.005;
   }
 
-  shoot() {
-    const { x, y, width, height } = this.spriteObj;
-    new BulletObject("enemyBullet", this.speed + 0.6, { x, y, width, height });
-    this.resetCount();
+  attemptToShoot() {
+    if (Math.random() > 0.60) {
+      const { x, y, width, height } = this.spriteObj;
+      new BulletObject("enemyBullet", this.speed + 0.6, { x, y, width, height });
+      this.canShoot = false;
+    }
   }
 
   resetCount() {
-    this.count = 0;
+    this.tickCount = 0;
   }
 
   update() {
     super.update();
-    this.count++;
+    this.tickCount++;
+
+    if (this.tickCount === this.tickCountLimit && this.canShoot) {
+      this.attemptToShoot();
+    }
 
     this.spriteObj.y += this.speed;
-
-    if (this.count === this.countLimit) this.shoot();
 
     if (this.collided) {
       ExplosionObject.createExplosion(this);
