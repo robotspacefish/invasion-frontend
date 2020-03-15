@@ -44,10 +44,18 @@ export default class GameObject {
     this.collided = true;
     obj.collided = true;
 
+    const player = this.getPlayerObj();
     if (this.type === "playerBullet") {
-      const player = GameObject.all.find(o => o.type === "player");
       player.addPoint();
     }
+
+    if (this.type === "enemyBullet") {
+      player.isHit = true;
+    }
+  }
+
+  getPlayerObj() {
+    return GameObject.all.find(o => o.type === "player");
   }
 
   checkForCollision() {
