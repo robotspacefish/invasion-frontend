@@ -5,11 +5,12 @@ import { generateRandomNumber, getRandomExplosionSound } from './utils';
 import ExplosionObject from './explosionObject';
 
 export default class Enemy extends GameObject {
-  constructor(speed = 0.45) {
+  constructor(speed = 1) {
     super();
     this.spriteObj = new SpriteObject(Enemy.initObj());
     this.speed = speed;
     this.type = "enemy"
+    console.log('new enemy speed: ', this.speed)
   }
 
   static initObj() {
@@ -49,11 +50,6 @@ export default class Enemy extends GameObject {
   }
 
   static spawn() {
-    new Enemy();
+    new Enemy(Math.random() * (3 - 0.45) + 0.45);
   }
-
 }
-
-// setInterval(() => {
-//   Enemy.spawn();
-// }, 1000)
