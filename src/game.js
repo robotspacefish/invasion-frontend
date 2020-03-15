@@ -7,6 +7,7 @@ export default class Game {
     this.width = width;
     this.height = height;
     this.player = new Player();
+    this.player.renderScore();
   }
 
   static get enemiesOnScreenLimit() {
@@ -14,7 +15,6 @@ export default class Game {
   }
 
   update() {
-    console.log(GameObject.all.length)
     if (GameObject.enemyCount <= Game.enemiesOnScreenLimit && Enemy.shouldSpawn()) {
       Enemy.spawn();
     }
