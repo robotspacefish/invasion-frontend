@@ -4,24 +4,26 @@ import { GAME_WIDTH, GAME_HEIGHT } from './index';
 import { generateRandomNumber } from './utils';
 import BulletObject from './bulletObject';
 import ExplosionObject from './explosionObject';
+import Game from './game';
 
 export default class Enemy extends GameObject {
-  constructor(speed = 1) {
+  constructor(spawnX, speed = 1) {
     super();
-    this.spriteObj = new SpriteObject(Enemy.initObj());
+    this.spriteObj = new SpriteObject(Enemy.initObj(spawnX));
     this.speed = speed;
     this.type = "enemy"
     this.count = 0;  // fire every time count hits countLimit
     this.countLimit = 150;
   }
 
-  static initObj() {
+  static initObj(spawnX) {
     return {
       sourceX: 0,
       sourceY: 176,
       sourceWidth: 218,
       sourceHeight: 169,
-      x: generateRandomNumber(0, GAME_WIDTH - 169),
+      // x: generateRandomNumber(0, GAME_WIDTH - 169),
+      x: spawnX,
       y: -170,
       width: 218 / 2,
       height: 169 / 2
@@ -62,7 +64,8 @@ export default class Enemy extends GameObject {
     return Math.random() < Enemy.frequency
   }
 
-  static spawn() {
-    new Enemy(Math.random() * (3 - 0.45) + 0.45);
+  static spawn(spawnX) {
+    return new Enemy(spawnX, Math.random() * (3 - 0.45) + 0.45);
   }
+
 }

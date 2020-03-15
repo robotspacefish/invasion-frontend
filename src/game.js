@@ -22,9 +22,13 @@ export default class Game {
   }
 
   static spawnEnemyWave() {
+    let spawnX = 0;
     while (GameObject.enemyCount < Game.enemiesOnScreenLimit) {
-      Enemy.spawn();
+      const enemy = Enemy.spawn(spawnX);
+      spawnX += enemy.spriteObj.width + 60;
     }
+
+    console.log(GameObject.all)
   }
 
   initScreens() {
