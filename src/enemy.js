@@ -1,9 +1,9 @@
 import GameObject from './gameObject';
 import SpriteObject from "./spriteObject";
 import { GAME_WIDTH, GAME_HEIGHT } from './index';
-import { generateRandomNumber, getRandomExplosionSound } from './utils';
-import ExplosionObject from './explosionObject';
+import { generateRandomNumber } from './utils';
 import BulletObject from './bulletObject';
+import ExplosionObject from './explosionObject';
 
 export default class Enemy extends GameObject {
   constructor(speed = 1) {
@@ -51,9 +51,7 @@ export default class Enemy extends GameObject {
     if (this.count === this.countLimit) this.shoot();
 
     if (this.collided) {
-      new ExplosionObject(this);
-      const sound = new Audio(getRandomExplosionSound());
-      sound.play();
+      ExplosionObject.createExplosion(this);
       GameObject.remove(this);
     };
 
