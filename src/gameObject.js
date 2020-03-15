@@ -8,13 +8,12 @@ export default class GameObject {
 
   static remove(objToDelete) {
     GameObject.all = GameObject.all.filter(gameObj => {
-      if (JSON.stringify(gameObj) !== JSON.stringify(objToDelete)) console.log('removing', objToDelete.type, GameObject.enemyCount, " left") // DEBUG
       return JSON.stringify(gameObj) !== JSON.stringify(objToDelete);
     });
   }
 
   static get enemyCount() {
-    return GameObject.all.filter(o => o.type === "enemy").length
+    return GameObject.all.filter(o => o.type === "enemy").length;
   }
 
   hasCollided(obj) {
@@ -31,14 +30,12 @@ export default class GameObject {
     return (pType === "player" && oType === "enemy") ||
       (pType === "enemy" && oType === "player") ||
       (pType === "player" && oType === "enemyBullet") ||
-      (pType === "playerBullet" && oType === "enemy")
+      (pType === "playerBullet" && oType === "enemy");
   }
 
   handleCollision(obj) {
-    console.log('collision detected')
-    // todo explosions, points, etc
-    // GameObject.remove(this); // todo put back after debugging
-    GameObject.remove(obj);
+    this.collided = true;
+    obj.collided = true;
   }
 
   checkForCollision() {
