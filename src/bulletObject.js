@@ -45,14 +45,13 @@ export default class BulletObject extends GameObject {
   update() {
     super.update();
     if (this.type === "playerBullet") {
-
       this.spriteObj.y -= this.speed
     }
     this.spriteObj.animate();
 
     if (this.collided) GameObject.remove(this);
 
-    if (this.spriteObj.currentFrame === this.spriteObj.frameCount) {
+    if (this.spriteObj.currentFrame === this.spriteObj.frameCount || this.outOfBounds()) {
       GameObject.remove(this);
     }
   }

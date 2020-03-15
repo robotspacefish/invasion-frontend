@@ -1,3 +1,5 @@
+import { GAME_HEIGHT } from "./index";
+
 export default class GameObject {
   static all = [];
 
@@ -14,6 +16,11 @@ export default class GameObject {
 
   static get enemyCount() {
     return GameObject.all.filter(o => o.type === "enemy").length;
+  }
+
+  outOfBounds() {
+    const { y, height } = this.spriteObj;
+    return y < 0 || y + height > GAME_HEIGHT;
   }
 
   hasCollided(obj) {
