@@ -3,6 +3,7 @@ import AnimatedSpriteObject from './animatedSpriteObject';
 import waves2 from './assets/waves2.png';
 import sprites from './assets/invasion_sheet.png';
 import SpriteObject from './spriteObject';
+import ExplosionObject from './explosionObject';
 
 export default class BulletObject extends GameObject {
   constructor(type, speed, shooter) {
@@ -48,29 +49,26 @@ export default class BulletObject extends GameObject {
     }
   }
 
-  // static speed() {
-  //   return 2;
-  // }
-
   update() {
     super.update();
     const direction = this.type === "playerBullet" ? -1 : 1;
-    // if (this.type === "playerBullet") {
-    //   this.spriteObj.y -= this.speed;
-    // } else if (this.type === "enemyBullet") {
-    //   this.spriteObj.y += this.speed;
-    // }
+
     this.spriteObj.y += this.speed * direction;
 
     if (this.type === "playerBullet") {
       this.spriteObj.animate();
-      if (this.spriteObj.currentFrame === this.spriteObj.frameCount || this.outOfBounds()) {
+      if (this.spriteObj.currentFrame === this.spriteObj.frameCount || this.outOfBounds() || this.collided) {
         GameObject.remove(this);
       }
 
     }
 
-    if (this.collided) GameObject.remove(this);
+    if (this.collided && (this.type === "enemy" || this.type === "enemyBullet")) {
+      const player = GameObject.all.find(o => o.type === "player");
+      ExplosionObject.createExplosion(player);
+      GameObject.remove(this);
+      GameObject.remove(player);
+    }
 
 
   }

@@ -5,7 +5,6 @@ import { getRandomExplosionSound } from './utils';
 
 export default class ExplosionObject extends GameObject {
   constructor(explodedObject) {
-    console.log('creating explosion...')
     super();
     this.type = "explosion";
     this.spriteObj = this.init(explodedObject);
