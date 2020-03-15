@@ -69,8 +69,8 @@ export default class Player extends GameObject {
   }
 
   shootAction() {
-    const { x, y, width, height } = this.spriteObj;
-    new BulletObject("playerBullet", { x, y, width, height });
+    const { x, y, width, height } = this.spriteObj, speed = 30;
+    new BulletObject("playerBullet", speed, { x, y, width, height });
     this.shootSound.play();
   }
 
