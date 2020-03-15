@@ -1,5 +1,6 @@
 body {
   height: 100vh;
+  font-family: sans-serif;
 }
 
 main {
@@ -9,10 +10,31 @@ main {
   align-items: center;
 }
 
-#screen-bg {
+#screen-bg,
+#title-screen {
   background: url('../assets/space_bg.png');
 }
 
 #screen {
   border: 1px solid black;
+}
+
+#game-content {
+  height: 600px;
+  width: 800px;
+  background: black;
+  color: white;
+}
+
+#title-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#title {
+  font-size: 4em;
 }
