@@ -37,12 +37,12 @@ export default class BulletObject extends GameObject {
       const obj = {
         sourceX: 0,
         sourceY: 352,
-        sourceWidth: 23,
+        sourceWidth: 32,
         sourceHeight: 32,
-        width: Math.floor(23 / 2),
-        height: Math.floor(32 / 2),
+        width: 23,
+        height: 32,
         spritesheet: sprites,
-        x: (shooter.x + (shooter.width / 2)) - Math.floor(23 / 2),
+        x: (shooter.x + (shooter.width / 2)) - 16,
         y: shooter.y + shooter.height
       }
       return new SpriteObject(obj);
