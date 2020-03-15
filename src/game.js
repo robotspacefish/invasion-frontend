@@ -14,10 +14,17 @@ export default class Game {
     this.screens = this.initScreens();
     this.ctx;
     this.shouldUpdateUI = false;
+    this.wave = 1;
   }
 
   static get enemiesOnScreenLimit() {
     return 5;
+  }
+
+  static spawnEnemyWave() {
+    while (GameObject.enemyCount < Game.enemiesOnScreenLimit) {
+      Enemy.spawn();
+    }
   }
 
   initScreens() {
@@ -29,8 +36,8 @@ export default class Game {
 
   update() {
     if (this.mode === "play") {
-      if (GameObject.enemyCount <= Game.enemiesOnScreenLimit && Enemy.shouldSpawn()) {
-        Enemy.spawn();
+      if (GameObject.enemyCount === 0) {
+        Game.spawnEnemyWave();
       }
 
       GameObject.all.forEach(obj => obj.update());
@@ -73,9 +80,4 @@ export default class Game {
   setContext() {
     this.ctx = document.getElementById('screen').getContext('2d');
   }
-
-  // setScoreBar() {
-  //   debugger
-  //   this.scoreBar = document.getElementById('score-bar');
-  // }
 }
