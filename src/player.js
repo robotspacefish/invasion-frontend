@@ -18,7 +18,8 @@ export default class Player extends GameObject {
     this.shootSound = new Audio(bark);
     this.type = "player";
     this.points = 0;
-    this.scoreBar = document.getElementById('score-bar')
+    this.isHit = false;
+    this.scoreBar = document.getElementById('score-bar');
   }
 
   static initObj() {
@@ -44,6 +45,7 @@ export default class Player extends GameObject {
   }
 
   update() {
+    console.log(this.isHit)
     super.update();
     this.dx *= Player.friction;
 

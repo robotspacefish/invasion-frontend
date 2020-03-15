@@ -41,6 +41,7 @@ export default class GameObject {
   }
 
   handleCollision(obj) {
+    console.log(this.type)
     this.collided = true;
     obj.collided = true;
 
@@ -49,7 +50,7 @@ export default class GameObject {
       player.addPoint();
     }
 
-    if (this.type === "enemyBullet") {
+    if (this.type === "player") {
       player.isHit = true;
     }
   }

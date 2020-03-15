@@ -20,6 +20,13 @@ export default class Game {
     }
 
     GameObject.all.forEach(obj => obj.update());
+
+    if (this.player.isHit) {
+      alert('game over')
+      // game over
+      // show score
+      // allow player to enter name
+    }
   }
 
   draw(ctx) {
