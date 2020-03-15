@@ -16,7 +16,8 @@ export default class Player extends GameObject {
     this.moveRight = false;
     this.shoot = false;
     this.shootSound = new Audio(bark);
-    this.type = "player"
+    this.type = "player";
+    this.points = 0;
   }
 
   static initObj() {
@@ -34,6 +35,11 @@ export default class Player extends GameObject {
 
   static get friction() {
     return 0.98; // slow player movement
+  }
+
+  addPoint() {
+    this.points++;
+    console.log(this.points);
   }
 
   update() {

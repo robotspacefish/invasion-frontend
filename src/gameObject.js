@@ -36,6 +36,11 @@ export default class GameObject {
   handleCollision(obj) {
     this.collided = true;
     obj.collided = true;
+
+    if (this.type === "playerBullet") {
+      const player = GameObject.all.find(o => o.type === "player");
+      player.addPoint();
+    }
   }
 
   checkForCollision() {
