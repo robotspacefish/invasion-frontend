@@ -3,6 +3,7 @@ import SpriteObject from "./spriteObject";
 import { GAME_WIDTH, GAME_HEIGHT } from './index';
 import { generateRandomNumber, getRandomExplosionSound } from './utils';
 import ExplosionObject from './explosionObject';
+import BulletObject from './bulletObject';
 
 export default class Enemy extends GameObject {
   constructor(speed = 1) {
@@ -10,7 +11,8 @@ export default class Enemy extends GameObject {
     this.spriteObj = new SpriteObject(Enemy.initObj());
     this.speed = speed;
     this.type = "enemy"
-    console.log('new enemy speed: ', this.speed)
+    this.count = 0;  // fire every time count hits countLimit
+    this.countLimit = 150;
   }
 
   static initObj() {
@@ -30,10 +32,23 @@ export default class Enemy extends GameObject {
     return 0.005;
   }
 
+  shoot() {
+    const { x, y, width, height } = this.spriteObj;
+    new BulletObject("enemyBullet", this.speed + 0.6, { x, y, width, height });
+    this.resetCount();
+  }
+
+  resetCount() {
+    this.count = 0;
+  }
+
   update() {
     super.update();
+    this.count++;
 
     this.spriteObj.y += this.speed;
+
+    if (this.count === this.countLimit) this.shoot();
 
     if (this.collided) {
       new ExplosionObject(this);
