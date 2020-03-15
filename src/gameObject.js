@@ -3,6 +3,7 @@ export default class GameObject {
 
   constructor() {
     GameObject.all.push(this);
+    this.collided = false;
   }
 
   static remove(objToDelete) {
