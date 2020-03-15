@@ -1,7 +1,7 @@
 import GameObject from './gameObject';
 import SpriteObject from "./spriteObject";
 import { GAME_WIDTH, GAME_HEIGHT } from './index';
-import { generateRandomNumber } from './utils';
+import { generateRandomNumber, getRandomExplosionSound } from './utils';
 import ExplosionObject from './explosionObject';
 
 export default class Enemy extends GameObject {
@@ -36,6 +36,8 @@ export default class Enemy extends GameObject {
 
     if (this.collided) {
       new ExplosionObject(this);
+      const sound = new Audio(getRandomExplosionSound());
+      sound.play();
       GameObject.remove(this);
     };
 
