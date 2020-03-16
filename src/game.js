@@ -22,7 +22,7 @@ export default class Game {
   }
 
   static spawnEnemyWave() {
-    let spawnX = 0;
+    let spawnX = 5;
     while (GameObject.enemyCount < Game.enemiesOnScreenLimit) {
       const enemy = Enemy.spawn(spawnX);
       spawnX += enemy.spriteObj.width + 60;
