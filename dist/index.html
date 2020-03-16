@@ -8,23 +8,19 @@
 </head>
 
 <body>
-  <header>
-    <nav id="menu">
-      <button id="show-users">View Users</button>
-      <button id="show-leaderboard">View Leaderboard</button>
-    </nav>
-  </header>
-  <main>
-    <section id="game-content">
-      <div class="ui">
-        <div id="score-bar"></div>
-      </div>
-      <div id="screen-bg">
-        <canvas id="screen" width="800" height="600"></canvas>
-      </div>
-    </section>
-  </main>
-
+  <div class="bg-container">
+    <main>
+      <section id="game-content">
+        <div class="ui">
+          <div id="score-bar"></div>
+        </div>
+        <div id="screen-bg">
+          <canvas id="screen" width="800" height="500"></canvas>
+        </div>
+      </section>
+    </main>
+  </div>
+  <section id="scores"></section>
   <script src="bundle.js"></script>
 </body>
 

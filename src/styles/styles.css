@@ -7,15 +7,15 @@ body {
   border: 0;
   margin: 0;
   font-family: sans-serif;
-  background: url('../assets/invasion_bg.png');
+}
+
+.bg-container {
+   background: url('../assets/invasion_bg.png');
   /* background-size: 65%; */
   background-repeat: no-repeat;
   background-position: top -10px center;
-}
-header {
-  padding: 0 20px;
-  margin: 20px 0;
-  max-width: 1200px;
+  position: relative;
+  height: 100vh;
 }
 
 main {
@@ -34,7 +34,7 @@ main {
 
 #game-content {
   position: absolute;
-  top: 130px;
+  top: 190px;
   height: var(--game-height);
   width: var(--game-width);
   background: black;
