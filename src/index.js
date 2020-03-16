@@ -45,6 +45,13 @@ function start() {
   requestAnimationFrame(gameLoop);
 }
 
+function reset() {
+  GameObject.all = [];
+  game = new Game(GAME_WIDTH, GAME_HEIGHT);
+  game.mode = "play";
+  game.renderCanvas();
+  requestAnimationFrame(gameLoop);
+}
 
 LeaderboardAdapter.fetchLeaderboard(document.getElementById('leaderboard-scores'));
 UsersAdapter.fetchUsers(document.getElementById('users-scores'));
