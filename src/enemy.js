@@ -38,7 +38,7 @@ export default class Enemy extends GameObject {
   attemptToShoot() {
     if (Math.random() > 0.60) {
       const { x, y, width, height } = this.spriteObj;
-      new BulletObject("enemyBullet", this.speed + 0.6, { x, y, width, height });
+      new BulletObject("enemyBullet", this.speed + 1.7, { x, y, width, height });
       this.canShoot = false;
     }
   }
