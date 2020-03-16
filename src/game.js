@@ -38,6 +38,12 @@ export default class Game {
     }
   }
 
+  gameOver() {
+    const player = GameObject.all.find(o => o.type === "player");
+    setTimeout(() => this.mode = "gameOver", 300);
+    GameObject.remove(player);
+  }
+
   update() {
     if (this.mode === "play") {
       if (GameObject.enemyCount === 0) {
@@ -48,16 +54,13 @@ export default class Game {
 
       GameObject.all.forEach(obj => obj.update());
 
-      if (this.player.isHit) {
-        this.mode = "gameOver";
-        // show score
-        // allow player to enter name
-      }
+      if (this.player.isHit) this.gameOver();
     }
   }
 
   draw() {
     this.ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+
     if (this.mode === "play") {
       GameObject.all.forEach(obj => obj.draw(this.ctx));
     }

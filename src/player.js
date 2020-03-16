@@ -48,10 +48,7 @@ export default class Player extends GameObject {
 
     if (this.collided) {
       ExplosionObject.createExplosion(this);
-      GameObject.remove(this);
-      // game over TODO
     }
-
 
     this.dx *= Player.friction;
 
