@@ -1,3 +1,5 @@
+import { reset } from './index';
+
 export default class Screen {
   static renderTitle(container) {
     container.innerHTML = `
@@ -29,5 +31,6 @@ export default class Screen {
         </div>
       </div>
     `;
+    document.getElementById('play-again-btn').addEventListener('click', reset)
   }
 }
