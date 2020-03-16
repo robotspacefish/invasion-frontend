@@ -58,17 +58,16 @@ body {
   align-items: center;
 }
 
-.leaderboard {
+.leaderboard,
+.users {
   display: flex;
   flex-wrap: wrap;
   width: 800px;
 }
 
-.leaderboard p {
+.leaderboard p,
+.users p {
   font-size: 0.8em;
   margin: 5px;
 }
 
-
-#users {
-}
