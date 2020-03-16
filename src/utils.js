@@ -3,7 +3,9 @@ import boom4 from './assets/audio/boom4.mp3';
 import boom6 from './assets/audio/boom6.mp3';
 import boom8 from './assets/audio/boom8.mp3';
 
+const BASE_URL = 'http://localhost:3000';
 
+const resToJson = res => res.json();
 
 const generateRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
