@@ -1,6 +1,7 @@
 import GameObject from './gameObject';
 import BulletObject from './bulletObject';
 import SpriteObject from './spriteObject';
+import ExplosionObject from './explosionObject';
 import { GAME_WIDTH, GAME_HEIGHT } from './index';
 import { mid } from './utils';
 import bark from './assets/audio/dog-bark-3.mp3';
@@ -44,6 +45,14 @@ export default class Player extends GameObject {
 
   update() {
     super.update();
+
+    if (this.collided) {
+      ExplosionObject.createExplosion(this);
+      GameObject.remove(this);
+      // game over TODO
+    }
+
+
     this.dx *= Player.friction;
 
     if (this.moveLeft && !this.moveRight) {
