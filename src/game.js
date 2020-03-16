@@ -83,7 +83,7 @@ export default class Game {
         </div>
       </div>
       <div id="screen-bg">
-        <canvas id="screen" width="800" height="600"></canvas>
+        <canvas id="screen" width="${GAME_WIDTH}" height="${GAME_HEIGHT}"></canvas>
       </div>
     `;
 
