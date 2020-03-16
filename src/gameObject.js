@@ -36,13 +36,11 @@ export default class GameObject {
     const pType = this.type, oType = obj.type;
 
     return (pType === "player" && oType === "enemy") ||
-      (pType === "enemy" && oType === "player") ||
       (pType === "player" && oType === "enemyBullet") ||
       (pType === "playerBullet" && oType === "enemy");
   }
 
   handleCollision(obj) {
-    console.log(this.type)
     this.collided = true;
     obj.collided = true;
 
