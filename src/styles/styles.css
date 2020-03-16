@@ -58,11 +58,16 @@ body {
   align-items: center;
 }
 
+#scores h3 {
+  text-align: center;
+}
+
 .leaderboard,
 .users {
   display: flex;
   flex-wrap: wrap;
   width: 800px;
+  margin-bottom: 40px;
 }
 
 .leaderboard p,
