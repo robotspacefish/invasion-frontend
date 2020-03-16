@@ -24,9 +24,9 @@ header {
 
 main {
   background: url('../assets/invasion_bubble.png');
-  background-size: 1200px 700px;
+  background-size: 1100px 700px;
   background-repeat: no-repeat;
-  background-position: top 0 center;
+  background-position: top 0 left 45%;
   height: 100vh;
   display: flex;
   justify-content: center;
