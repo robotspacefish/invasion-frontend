@@ -53,6 +53,7 @@ export default class Enemy extends GameObject {
 
     if (this.tickCount === this.tickCountLimit && this.canShoot) {
       this.attemptToShoot();
+      this.tickCount = 0;
     }
 
     this.spriteObj.y += this.speed;
