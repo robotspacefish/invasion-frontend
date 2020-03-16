@@ -28,7 +28,7 @@ export default class Game {
       spawnX += enemy.spriteObj.width + 60;
     }
 
-    console.log(GameObject.all)
+    console.log(GameObject.all) // DEBUG
   }
 
   initScreens() {
@@ -42,6 +42,8 @@ export default class Game {
     if (this.mode === "play") {
       if (GameObject.enemyCount === 0) {
         Game.spawnEnemyWave();
+        this.wave++;
+        this.renderWaveUI();
       }
 
       GameObject.all.forEach(obj => obj.update());
@@ -63,14 +65,19 @@ export default class Game {
   }
 
   static renderScoreUI(points) {
-    document.getElementById('score-bar').innerHTML = points;
+    document.getElementById('score').innerHTML = `Score: ${points}`;
+  }
+
+  renderWaveUI() {
+    document.getElementById('wave').innerHTML = `Wave: ${this.wave}`;
   }
 
   renderCanvas() {
     this.container.innerHTML = `
       <div class="ui">
         <div id="score-bar">
-          ${this.player.points}
+          <div id="score">Score: ${this.player.points}</div>
+          <div id="wave">Wave: </div>
         </div>
       </div>
       <div id="screen-bg">
