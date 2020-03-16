@@ -49,8 +49,7 @@ export default class Game {
       GameObject.all.forEach(obj => obj.update());
 
       if (this.player.isHit) {
-        console.log('game over')
-        // game over
+        this.mode = "gameOver";
         // show score
         // allow player to enter name
       }
