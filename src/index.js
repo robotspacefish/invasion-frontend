@@ -1,22 +1,27 @@
 import './styles/styles.css';
+import { UsersAdapter } from './user/usersAdapter';
+import { LeaderboardAdapter } from './leaderboard/leaderboardAdapter';
 import Game from './game';
 import GameObject from './gameObject';
+
 const GAME_WIDTH = 800, GAME_HEIGHT = 500;
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-
 let lastTime = 0;
 
 function gameLoop(timeStamp) {
-
   let deltaTime = timeStamp - lastTime;
   lastTime = timeStamp;
 
-  if (game.mode === "play") {
-    game.draw();
-    game.update(deltaTime);
-  }
+  if (game.mode === "gameOver") {
+    game.screens.gameOver()
+  } else {
+    if (game.mode === "play") {
+      game.draw();
+      game.update(deltaTime);
+    }
 
-  requestAnimationFrame(gameLoop);
+    requestAnimationFrame(gameLoop);
+  }
 }
 
 window.addEventListener('keydown', (e) => {
@@ -35,10 +40,22 @@ window.addEventListener('keydown', (e) => {
 });
 
 function start() {
-  game.screens.title.render();
+  game.screens.title();
+  // game.screens.gameOver()
   requestAnimationFrame(gameLoop);
 }
 
+function reset() {
+  // TODO continue trying to reset everything for next playthrough
+  GameObject.all = [];
+  game = new Game(GAME_WIDTH, GAME_HEIGHT);
+  game.mode = "play";
+  game.renderCanvas();
+  requestAnimationFrame(gameLoop);
+}
+
+LeaderboardAdapter.fetchLeaderboard(document.getElementById('leaderboard-scores'));
+UsersAdapter.fetchUsers(document.getElementById('users-scores'));
 
 start();
-export { GAME_WIDTH, GAME_HEIGHT };
+export { GAME_WIDTH, GAME_HEIGHT, reset };
