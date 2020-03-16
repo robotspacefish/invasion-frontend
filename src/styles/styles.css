@@ -1,18 +1,43 @@
 body {
-  height: 100vh;
+  border: 0;
+  margin: 0;
   font-family: sans-serif;
 }
+header {
+  background: url('../assets/invasion_header.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 150px;
+  padding: 0 20px;
+  margin: 20px 0;
+  max-width: 1200px;
+}
+/* .bg-container {
+  height: 100vh;
+  /* background: url('../assets/invasionBG.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; */
+  /* margin: 20px; */
+/* } */
 
 main {
-  height: 90%;
+  background: url('../assets/invasion_bubble.png');
+  background-size: 1200px 700px;
+  background-repeat: no-repeat;
+  background-position: top 0 center;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  position: relative;
+
 }
 
 #screen-bg,
 #title-screen {
   background: url('../assets/space_bg.png');
+  overflow: hidden;
 }
 
 #screen {
@@ -20,13 +45,22 @@ main {
 }
 
 #game-content {
-  height: 600px;
-  width: 800px;
+  position: absolute;
+  top: 100px;
+  height: 500px;
+  width: 700px;
   background: black;
   color: white;
+  /* position: relative; */
 }
 
-#title-screen {
+.ui {
+  position: absolute;
+  top: 0;
+}
+
+#title-screen,
+#game-over-screen {
   width: 100%;
   height: 100%;
   display: flex;
