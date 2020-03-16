@@ -10,16 +10,12 @@ body {
 }
 
 .bg-container {
-   background: url('../assets/invasion_bg.png');
-  /* background-size: 65%; */
+  background: url('../assets/invasion_bg.png');
   background-repeat: no-repeat;
-  background-position: top -10px center;
-  position: relative;
-  height: 100vh;
-   height: 100vh;
+  background-position: top -20px center;
+  height: 120vh;
   display: flex;
   justify-content: center;
-  position: relative;
 }
 
 #screen-bg,
@@ -30,7 +26,7 @@ body {
 
 #game-content {
   position: absolute;
-  top: 190px;
+  top: 180px;
   height: var(--game-height);
   width: var(--game-width);
   background: black;
