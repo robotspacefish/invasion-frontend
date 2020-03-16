@@ -62,7 +62,7 @@ export default class Game {
     }
   }
 
-  static renderScore(points) {
+  static renderScoreUI(points) {
     document.getElementById('score-bar').innerHTML = points;
   }
 

@@ -43,11 +43,11 @@ export default class GameObject {
   handleCollision(obj) {
     this.collided = true;
     obj.collided = true;
-
+    console.log(`${this.type} collided with ${obj.type}`)
     const player = this.getPlayerObj();
     if (this.type === "playerBullet") {
       player.addPoint();
-      Game.renderScore(player.points);
+      Game.renderScoreUI(player.points);
     }
 
     if (this.type === "player") {
