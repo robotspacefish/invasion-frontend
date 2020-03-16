@@ -13,7 +13,7 @@ body {
   background: url('../assets/invasion_bg.png');
   background-repeat: no-repeat;
   background-position: top -20px center;
-  height: 120vh;
+  height: 110vh;
   display: flex;
   justify-content: center;
 }
