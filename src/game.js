@@ -14,7 +14,7 @@ export default class Game {
     this.screens = this.initScreens();
     this.ctx;
     this.shouldUpdateUI = false;
-    this.wave = 1;
+    this.wave = 0;
   }
 
   static get enemiesOnScreenLimit() {
