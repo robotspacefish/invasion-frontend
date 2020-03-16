@@ -1,7 +1,7 @@
 import Player from './player';
 import Enemy from './enemy';
 import GameObject from './gameObject';
-import TitleScreen from './titleScreen';
+import Screen from './Screen';
 import { GAME_WIDTH, GAME_HEIGHT } from './index';
 
 export default class Game {
@@ -33,8 +33,8 @@ export default class Game {
 
   initScreens() {
     return {
-      title: new TitleScreen(this.container),
-      // gameOver: new GameOverScreen(this.container)
+      title: () => Screen.renderTitle(this.container),
+      gameOver: () => Screen.renderGameOver(this.container, this.player.points, this.wave)
     }
   }
 
@@ -45,6 +45,7 @@ export default class Game {
   }
 
   update() {
+    console.log('updating')
     if (this.mode === "play") {
       if (GameObject.enemyCount === 0) {
         Game.spawnEnemyWave();
