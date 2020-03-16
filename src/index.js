@@ -1,7 +1,8 @@
 import './styles/styles.css';
 import Game from './game';
-const GAME_WIDTH = 800, GAME_HEIGHT = 600;
-const game = new Game(GAME_WIDTH, GAME_HEIGHT);
+import GameObject from './gameObject';
+const GAME_WIDTH = 800, GAME_HEIGHT = 500;
+let game = new Game(GAME_WIDTH, GAME_HEIGHT);
 
 let lastTime = 0;
 
