@@ -57,20 +57,12 @@ export default class BulletObject extends GameObject {
 
     if (this.type === "playerBullet") {
       this.spriteObj.animate();
-      if (this.spriteObj.currentFrame === this.spriteObj.frameCount || this.outOfBounds() || this.collided) {
+      if (this.spriteObj.currentFrame === this.spriteObj.frameCount) {
         GameObject.remove(this);
       }
-
     }
 
-    if (this.collided && (this.type === "enemy" || this.type === "enemyBullet")) {
-      const player = GameObject.all.find(o => o.type === "player");
-      ExplosionObject.createExplosion(player);
-      GameObject.remove(this);
-      GameObject.remove(player);
-    }
-
-
+    if (this.collided || this.outOfBounds()) GameObject.remove(this);
   }
 
 }
