@@ -34,7 +34,7 @@ export default class Screen {
       </div>
     `;
 
-    document.getElementById('submit-score-btn').addEventListener('click', handleFormSubmit);
+    document.getElementById('submit-score-btn').addEventListener('click', (e) => handleFormSubmit(e, finalScore));
     document.getElementById('play-again-btn').addEventListener('click', reset)
   }
 }
