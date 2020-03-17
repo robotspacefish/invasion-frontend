@@ -5,7 +5,7 @@ import Game from './game';
 import GameObject from './gameObject';
 
 const GAME_WIDTH = 800, GAME_HEIGHT = 500;
-let game = new Game(GAME_WIDTH, GAME_HEIGHT);
+let game;
 let lastTime = 0;
 
 function handleFormSubmit(e, score) {
@@ -44,22 +44,31 @@ window.addEventListener('keydown', (e) => {
   if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
 });
 
-function start() {
-  game.screens.title();
-  // game.screens.gameOver()
+function init() {
+  GameObject.all = [];
+  game = new Game(GAME_WIDTH, GAME_HEIGHT);
+  game.mode = "title";
   requestAnimationFrame(gameLoop);
+}
+
+function start() {
+  fetchData(leaderboardDiv, usersScoreDiv);
+  init();
+  game.screens.title();
+
 }
 
 function reset() {
-  GameObject.all = [];
-  game = new Game(GAME_WIDTH, GAME_HEIGHT);
+  init();
   game.mode = "play";
   game.renderCanvas();
-  requestAnimationFrame(gameLoop);
 }
 
-LeaderboardAdapter.fetchLeaderboard(document.getElementById('leaderboard-scores'));
-UsersAdapter.fetchUsers(document.getElementById('users-scores'));
+function fetchData(leaderboardDiv, usersScoreDiv) {
+  LeaderboardAdapter.fetchLeaderboard(leaderboardDiv);
+  UsersAdapter.fetchUsers(usersScoreDiv);
+}
+
 
 start();
 export { GAME_WIDTH, GAME_HEIGHT, reset, handleFormSubmit };
