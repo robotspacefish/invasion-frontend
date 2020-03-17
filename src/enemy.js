@@ -1,10 +1,8 @@
 import GameObject from './gameObject';
 import SpriteObject from "./spriteObject";
-import { GAME_WIDTH, GAME_HEIGHT } from './index';
-import { generateRandomNumber } from './utils';
+import { GAME_HEIGHT } from './index';
 import BulletObject from './bulletObject';
 import ExplosionObject from './explosionObject';
-import Game from './game';
 
 export default class Enemy extends GameObject {
   constructor(spawnX, speed = 1) {
@@ -42,6 +40,15 @@ export default class Enemy extends GameObject {
     this.tickCount = 0;
   }
 
+  move() {
+    this.spriteObj.y += this.speed;
+  }
+
+  handleCollision() {
+    ExplosionObject.createExplosion(this);
+    GameObject.remove(this);
+  }
+
   update() {
     super.update();
     this.tickCount++;
@@ -51,11 +58,10 @@ export default class Enemy extends GameObject {
       this.tickCount = 0;
     }
 
-    this.spriteObj.y += this.speed;
+    this.move();
 
     if (this.collided) {
-      ExplosionObject.createExplosion(this);
-      GameObject.remove(this);
+      this.handleCollision();
     };
 
     if (this.spriteObj.y > GAME_HEIGHT + 10) GameObject.remove(this);
