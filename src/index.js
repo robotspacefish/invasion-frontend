@@ -4,6 +4,9 @@ import LeaderboardAdapter from './leaderboard/leaderboardAdapter';
 import Game from './game';
 import GameObject from './gameObject';
 
+const usersScoreDiv = document.getElementById('users-scores');
+const leaderboardDiv = document.getElementById('leaderboard-scores');
+
 const GAME_WIDTH = 800, GAME_HEIGHT = 500;
 let game;
 let lastTime = 0;
@@ -71,4 +74,4 @@ function fetchData(leaderboardDiv, usersScoreDiv) {
 
 
 start();
-export { GAME_WIDTH, GAME_HEIGHT, reset, handleFormSubmit };
+export { GAME_WIDTH, GAME_HEIGHT, start, reset, handleFormSubmit, usersScoreDiv, leaderboardDiv };
