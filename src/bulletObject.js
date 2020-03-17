@@ -3,7 +3,6 @@ import AnimatedSpriteObject from './animatedSpriteObject';
 import waves2 from './assets/waves2.png';
 import sprites from './assets/invasion_sheet.png';
 import SpriteObject from './spriteObject';
-import ExplosionObject from './explosionObject';
 
 export default class BulletObject extends GameObject {
   constructor(type, speed, shooter) {

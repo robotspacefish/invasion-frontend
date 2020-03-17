@@ -27,8 +27,6 @@ export default class Game {
       const enemy = Enemy.spawn(spawnX);
       spawnX += enemy.spriteObj.width + 60;
     }
-
-    console.log(GameObject.all) // DEBUG
   }
 
   initScreens() {
@@ -45,7 +43,6 @@ export default class Game {
   }
 
   update() {
-    console.log('updating')
     if (this.mode === "play") {
       if (GameObject.enemyCount === 0) {
         Game.spawnEnemyWave();

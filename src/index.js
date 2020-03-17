@@ -17,16 +17,13 @@ function handleFormSubmit(e, score) {
   if (usernameFromInput !== "") UsersAdapter.addNewUser(usernameFromInput, score);
 }
 
-function gameLoop(timeStamp) {
-  let deltaTime = timeStamp - lastTime;
-  lastTime = timeStamp;
-
+function gameLoop() {
   if (game.mode === "gameOver") {
     game.screens.gameOver()
   } else {
     if (game.mode === "play") {
       game.draw();
-      game.update(deltaTime);
+      game.update();
     }
 
     requestAnimationFrame(gameLoop);
@@ -72,6 +69,6 @@ function fetchData(leaderboardDiv, usersScoreDiv) {
   UsersAdapter.fetchUsers(usersScoreDiv);
 }
 
-
 start();
+
 export { GAME_WIDTH, GAME_HEIGHT, start, reset, handleFormSubmit, usersScoreDiv, leaderboardDiv };
