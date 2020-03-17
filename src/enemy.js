@@ -23,16 +23,11 @@ export default class Enemy extends GameObject {
       sourceY: 176,
       sourceWidth: 218,
       sourceHeight: 169,
-      // x: generateRandomNumber(0, GAME_WIDTH - 169),
       x: spawnX,
       y: -170,
       width: 218 / 2,
       height: 169 / 2
     }
-  }
-
-  static get frequency() {
-    return 0.005;
   }
 
   attemptToShoot() {
@@ -64,10 +59,6 @@ export default class Enemy extends GameObject {
     };
 
     if (this.spriteObj.y > GAME_HEIGHT + 10) GameObject.remove(this);
-  }
-
-  static shouldSpawn() {
-    return Math.random() < Enemy.frequency
   }
 
   static spawn(spawnX) {
