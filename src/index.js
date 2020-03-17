@@ -8,6 +8,11 @@ const GAME_WIDTH = 800, GAME_HEIGHT = 500;
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
 let lastTime = 0;
 
+function handleFormSubmit(e) {
+  const usernameFromInput = e.target.parentNode.children[2].value
+  UsersAdapter.addNewUser(usernameFromInput);
+}
+
 function gameLoop(timeStamp) {
   let deltaTime = timeStamp - lastTime;
   lastTime = timeStamp;
@@ -35,8 +40,7 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') game.player.moveLeft = true;
     if (e.code === "Space") game.player.shoot = true;
   }
-
-  e.preventDefault(); // prevent scrolling browser
+  if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
 });
 
 function start() {
@@ -57,4 +61,4 @@ LeaderboardAdapter.fetchLeaderboard(document.getElementById('leaderboard-scores'
 UsersAdapter.fetchUsers(document.getElementById('users-scores'));
 
 start();
-export { GAME_WIDTH, GAME_HEIGHT, reset };
+export { GAME_WIDTH, GAME_HEIGHT, reset, handleFormSubmit };
