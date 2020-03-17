@@ -10,7 +10,7 @@ export default class Game {
     this.height = height;
     this.player = new Player();
     this.container = document.getElementById('game-content');
-    this.mode = "title";
+    this.mode;
     this.screens = this.initScreens();
     this.ctx;
     this.shouldUpdateUI = false;
