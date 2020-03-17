@@ -1,4 +1,4 @@
-class Leaderboard {
+export default class Leaderboard {
   constructor(highestScoringUsers) {
     this.highestScoringUsers = [...highestScoringUsers];
   }
@@ -16,5 +16,3 @@ class Leaderboard {
     });
   }
 }
-
-export { Leaderboard };

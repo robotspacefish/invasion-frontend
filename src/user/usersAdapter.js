@@ -1,13 +1,15 @@
 import { BASE_URL, resToJson } from '../utils';
-import { User } from './user';
 
-class UsersAdapter {
+import User from './user';
+import Score from '../score/score';
+import ScoresAdapter from '../score/scoresAdapter';
+
+export default class UsersAdapter {
   static fetchUsers(container) {
     fetch(`${BASE_URL}/users`)
       .then(resToJson)
       .then(json => {
         User.destroyAll();
-
         json.data.forEach(u => {
           new User({
             id: u.id,

@@ -1,4 +1,4 @@
-class User {
+export default class User {
   static all = [];
 
   constructor({ id, username, highestScore, scores }) {
@@ -29,5 +29,3 @@ class User {
     })
   }
 }
-
-export { User };

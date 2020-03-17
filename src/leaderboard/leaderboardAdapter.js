@@ -1,7 +1,7 @@
-import { BASE_URL, resToJson, main } from '../utils';
-import { Leaderboard } from './leaderboard';
+import { BASE_URL, resToJson } from '../utils';
+import Leaderboard from './leaderboard';
 
-class LeaderboardAdapter {
+export default class LeaderboardAdapter {
   static fetchLeaderboard(container) {
     fetch(`${BASE_URL}/leaderboard`)
       .then(resToJson)
@@ -19,5 +19,3 @@ class LeaderboardAdapter {
       .catch(error => console.error(error.message));
   }
 }
-
-export { LeaderboardAdapter };
