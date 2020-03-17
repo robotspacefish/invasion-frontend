@@ -20,6 +20,21 @@ class UsersAdapter {
       })
       .catch(error => console.error(error.message));
   }
-}
 
-export { UsersAdapter };
+  static addNewUser(username, value) {
+    const config = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      },
+      body: JSON.stringify({ username, value })
+    }
+    fetch(`${BASE_URL}/users`, config)
+      .then(resToJson)
+      .then(user => {
+        // rerender scores & go back to title
+      })
+      .catch(error => console.log(error.message));
+  }
+}

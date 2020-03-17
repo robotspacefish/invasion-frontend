@@ -1,6 +1,6 @@
 import './styles/styles.css';
-import { UsersAdapter } from './user/usersAdapter';
-import { LeaderboardAdapter } from './leaderboard/leaderboardAdapter';
+import UsersAdapter from './user/usersAdapter';
+import LeaderboardAdapter from './leaderboard/leaderboardAdapter';
 import Game from './game';
 import GameObject from './gameObject';
 
@@ -8,9 +8,10 @@ const GAME_WIDTH = 800, GAME_HEIGHT = 500;
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
 let lastTime = 0;
 
-function handleFormSubmit(e) {
-  const usernameFromInput = e.target.parentNode.children[2].value
-  UsersAdapter.addNewUser(usernameFromInput);
+function handleFormSubmit(e, score) {
+  e.preventDefault();
+  const usernameFromInput = e.target.parentNode.children[2].value.toLowerCase();
+  if (usernameFromInput !== "") UsersAdapter.addNewUser(usernameFromInput, score);
 }
 
 function gameLoop(timeStamp) {
