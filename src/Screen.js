@@ -1,4 +1,4 @@
-import { reset } from './index';
+import { reset, handleFormSubmit } from './index';
 
 export default class Screen {
   static renderTitle(container) {
@@ -21,9 +21,11 @@ export default class Screen {
         </div>
 
         <div id="game-over-input">
-          <label>Enter Your Name</label></br>
-          <input type="text">
-          <button id="submit-score">Enter</button>
+          <form>
+            <label>Enter Your Name</label></br>
+            <input type="text">
+            <button id="submit-score-btn">Enter</button>
+          </form
         </div>
 
         <div id="play-again">
@@ -31,6 +33,8 @@ export default class Screen {
         </div>
       </div>
     `;
+
+    document.getElementById('submit-score-btn').addEventListener('click', handleFormSubmit);
     document.getElementById('play-again-btn').addEventListener('click', reset)
   }
 }
