@@ -10,20 +10,20 @@ export default class AnimatedSpriteObject extends SpriteObject {
     this.rows = rows;
     this.currentFrame = 1;
     this.delay = 3;
-    this.count = 0;
+    this.tickCount = 0;
   }
 
   animate() {
-    this.count++
+    this.tickCount++
 
-    if (this.count === this.delay) {
+    if (this.tickCount === this.delay) {
 
       this.sourceX = Math.floor(this.currentFrame % this.columns) * this.sourceWidth;
       this.sourceY = Math.floor(this.currentFrame / this.columns) * this.sourceHeight;
 
       if (this.currentFrame == this.frameCount) this.currentFrame = 0;
       else if (this.currentFrame < this.frameCount) this.currentFrame++;
-      this.count = 0;
+      this.tickCount = 0;
     }
   }
 }
