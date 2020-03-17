@@ -1,8 +1,7 @@
 import { BASE_URL, resToJson } from '../utils';
-
+import { usersScoreDiv, leaderboardDiv, start } from '../index';
 import User from './user';
-import Score from '../score/score';
-import ScoresAdapter from '../score/scoresAdapter';
+import Leaderboard from '../leaderboard/leaderboard';
 
 export default class UsersAdapter {
   static fetchUsers(container) {
@@ -35,7 +34,7 @@ export default class UsersAdapter {
     fetch(`${BASE_URL}/users`, config)
       .then(resToJson)
       .then(user => {
-        // rerender scores & go back to title
+        start();
       })
       .catch(error => console.log(error.message));
   }
