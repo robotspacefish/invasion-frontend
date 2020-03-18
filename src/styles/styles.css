@@ -53,8 +53,32 @@ body {
 }
 
 #title {
-  font-size: 4em;
+  font-size: 5em;
 }
+
+.controls {
+  border: 1px solid white;
+  margin: 40px 0 -40px;
+}
+
+.controls h3 {
+  border-bottom: 1px solid white;
+  padding: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 100;
+}
+
+.controls ul {
+  list-style: none;
+  padding: 5px;
+}
+
+.controls li {
+  margin: 5px 0;
+  font-weight: 100;
+}
+
 
 #scores {
   display: flex;
