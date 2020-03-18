@@ -38,7 +38,8 @@ export default class Game {
 
   gameOver() {
     const player = GameObject.all.find(o => o.type === "player");
-    setTimeout(() => this.mode = "gameOver", 300);
+
+    this.mode = "gameOver"
     GameObject.remove(player);
   }
 
