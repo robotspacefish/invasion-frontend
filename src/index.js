@@ -13,7 +13,7 @@ let lastTime = 0;
 
 function handleFormSubmit(e, score) {
   e.preventDefault();
-  const usernameFromInput = e.target.parentNode.children[2].value.toLowerCase();
+  const usernameFromInput = e.target.parentNode.children[0].value.toLowerCase();
   if (usernameFromInput !== "") UsersAdapter.addNewUser(usernameFromInput, score);
 }
 
