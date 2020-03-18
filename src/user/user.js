@@ -18,7 +18,7 @@ export default class User {
     container.innerHTML = '';
     const usersDiv = document.createElement('div');
     usersDiv.classList.add('users');
-    container.innerHTML = "<h3>User's Highest Scores</h3>";
+    container.innerHTML = "<h3>Player's Highest Scores</h3>";
     container.appendChild(usersDiv);
     User.all.forEach(u => {
       usersDiv.innerHTML += `
