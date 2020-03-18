@@ -3,14 +3,18 @@
   --game-height: 500px;
 }
 
-body {
+* {
   border: 0;
   margin: 0;
+}
+
+body {
+  font-size: 16px;
   font-family: sans-serif;
 }
 
 .bg-container {
-  background: url('../assets/invasion_bg.png');
+  background: url('../assets/invasion_bg_2.png');
   background-repeat: no-repeat;
   background-position: top -20px center;
   height: 110vh;
