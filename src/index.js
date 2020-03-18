@@ -37,9 +37,11 @@ window.addEventListener('keydown', (e) => {
       game.renderCanvas();
     }
   } else if (game.mode === "play") {
-    if (e.key === 'ArrowRight') game.player.moveRight = true;
-    if (e.key === 'ArrowLeft') game.player.moveLeft = true;
-    if (e.code === "Space") game.player.shoot = true;
+    if (!e.repeat) {
+      if (e.key === 'ArrowRight') game.player.moveRight = true;
+      if (e.key === 'ArrowLeft') game.player.moveLeft = true;
+      if (e.code === "Space") game.player.shoot = true;
+    }
   }
   if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
 });
