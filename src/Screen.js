@@ -23,14 +23,13 @@ export default class Screen {
         <div id="game-over-input">
           <form>
             <label>Enter Your Name</label></br>
-            <input type="text">
-            <button id="submit-score-btn">Enter</button>
+           <div>
+              <input type="text">
+              <button id="submit-score-btn" class="btn">Enter</button>
+           </div>
           </form
         </div>
-
-        <div id="play-again">
-          <button id="play-again-btn">Play Again?</button>
-        </div>
+        <button id="play-again-btn" class="btn">Play Again?</button>
       </div>
     `;
 
