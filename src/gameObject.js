@@ -43,7 +43,6 @@ export default class GameObject {
   handleCollision(obj) {
     this.collided = true;
     obj.collided = true;
-    console.log(`${this.type} collided with ${obj.type}`)
     const player = this.getPlayerObj();
     if (this.type === "playerBullet") {
       player.addPoint();
@@ -60,6 +59,7 @@ export default class GameObject {
   }
 
   checkForCollision() {
+    // separate 'this' object from all other objects
     let otherObjects = [];
     if (this.type === "playerBullet") {
       otherObjects = GameObject.all.filter(o => o.type === "enemy");
