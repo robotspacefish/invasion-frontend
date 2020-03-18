@@ -1,7 +1,6 @@
 import { BASE_URL, resToJson } from '../utils';
-import { usersScoreDiv, leaderboardDiv, start } from '../index';
+import { start } from '../index';
 import User from './user';
-import Leaderboard from '../leaderboard/leaderboard';
 
 export default class UsersAdapter {
   static fetchUsers(container) {
@@ -9,6 +8,7 @@ export default class UsersAdapter {
       .then(resToJson)
       .then(json => {
         User.destroyAll();
+
         json.data.forEach(u => {
           new User({
             id: u.id,
