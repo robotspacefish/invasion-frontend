@@ -6,12 +6,24 @@ export default class Screen {
       <div id="title-screen">
         <h1 id="title">Invasion!</h1>
         <p>Press [SPACEBAR] to Start<p>
+        ${Screen.renderControlInstructions()}
+      </div>
+    `
+  }
+
+  static renderControlInstructions() {
+    return `
+      <div class="controls">
+        <h3>Controls</h3>
+        <ul>
+          <li>Shoot - Spacebar</li>
+          <li>Move - Left/Right Arrows</li>
+        <ul>
       </div>
     `
   }
 
   static renderGameOver(container, finalScore, finalWave) {
-    console.log(finalScore, finalWave)
     container.innerHTML = `
       <div id="game-over-screen">
         <h1>Game Over!</h1>
