@@ -87,7 +87,7 @@ export default class Player extends GameObject {
   }
 
   keepInBounds() {
-    const { x, y, width } = this.spriteObj;
+    const { x, width } = this.spriteObj;
     if (x <= 0) this.spriteObj.x = 0;
     if (x + width >= GAME_WIDTH) this.spriteObj.x = GAME_WIDTH - this.spriteObj.width;
   }
