@@ -15,6 +15,7 @@ export default class User {
   }
 
   static renderAll(container) {
+    // display all user's username and highest scores
     container.innerHTML = '';
     const usersDiv = document.createElement('div');
     usersDiv.classList.add('users');
