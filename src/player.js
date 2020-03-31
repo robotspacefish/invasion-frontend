@@ -50,22 +50,28 @@ export default class Player extends GameObject {
       ExplosionObject.createExplosion(this);
     }
 
-    this.dx *= Player.friction;
-
-    if (this.moveLeft && !this.moveRight) {
-      this.moveLeftAction();
-      this.moveLeft = false;
-    }
-
-    if (this.moveRight && !this.moveLeft) {
-      this.moveRightAction();
-      this.moveRight = false;
-    }
     if (this.shoot) {
       this.shootAction();
       this.shoot = false;
     }
 
+    this.move();
+  }
+
+  move() {
+    this.dx *= Player.friction;
+
+    if (this.moveLeft) {
+      this.moveLeftAction();
+      this.moveLeft = false;
+    }
+
+    if (this.moveRight) {
+      this.moveRightAction();
+      this.moveRight = false;
+    }
+
+    // keep within speed limit
     this.dx = mid(-this.dxMax, this.dx, this.dxMax);
 
     this.spriteObj.x += this.dx;
