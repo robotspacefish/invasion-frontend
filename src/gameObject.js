@@ -32,14 +32,6 @@ export default class GameObject {
       y < obj.spriteObj.y + obj.spriteObj.height;
   }
 
-  canCollide(obj) {
-    const pType = this.type, oType = obj.type;
-
-    return (pType === "player" && oType === "enemy") ||
-      (pType === "player" && oType === "enemyBullet") ||
-      (pType === "playerBullet" && oType === "enemy");
-  }
-
   handleCollision(obj) {
     this.collided = true;
     obj.collided = true;
@@ -78,6 +70,7 @@ export default class GameObject {
 
   draw(ctx) {
     const { sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, image } = this.spriteObj;
+
     ctx.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height);
   }
 }
