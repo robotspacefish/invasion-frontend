@@ -39,7 +39,7 @@ export default class Game {
   gameOver() {
     const player = GameObject.all.find(o => o.type === "player");
 
-    this.mode = "gameOver"
+    this.mode = "gameOver";
     GameObject.remove(player);
   }
 
@@ -60,9 +60,7 @@ export default class Game {
   draw() {
     this.ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
-    if (this.mode === "play") {
-      GameObject.all.forEach(obj => obj.draw(this.ctx));
-    }
+    GameObject.all.forEach(obj => obj.draw(this.ctx));
   }
 
   static renderScoreUI(points) {
