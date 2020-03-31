@@ -5,8 +5,8 @@ export default class GameObject {
   static all = [];
 
   constructor() {
-    GameObject.all.push(this);
     this.collided = false;
+    GameObject.all.push(this);
   }
 
   static remove(objToDelete) {
