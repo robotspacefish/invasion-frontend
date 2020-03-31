@@ -74,9 +74,4 @@ function start() {
 
 start();
 
-const btn = document.getElementById('sort-btn');
-btn.addEventListener('click', () => {
-  UsersAdapter.sortUserByName(document.getElementById('sorted-users'));
-})
-
 export { GAME_WIDTH, GAME_HEIGHT, start, reset, handleFormSubmit, usersScoreDiv, leaderboardDiv };
