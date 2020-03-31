@@ -51,6 +51,11 @@ export default class Enemy extends GameObject {
 
   update() {
     super.update();
+
+    if (this.collided) {
+      this.handleCollision();
+    };
+
     this.tickCount++;
 
     if (this.tickCount === this.tickCountLimit && this.canShoot) {
@@ -59,10 +64,6 @@ export default class Enemy extends GameObject {
     }
 
     this.move();
-
-    if (this.collided) {
-      this.handleCollision();
-    };
 
     if (this.spriteObj.y > GAME_HEIGHT + 10) GameObject.remove(this);
   }
