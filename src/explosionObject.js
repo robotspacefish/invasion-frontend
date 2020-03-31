@@ -37,7 +37,6 @@ export default class ExplosionObject extends GameObject {
   }
 
   update() {
-    super.update();
     this.spriteObj.animate();
 
     if (this.spriteObj.currentFrame === this.spriteObj.frameCount) {
