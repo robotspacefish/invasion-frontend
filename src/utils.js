@@ -3,7 +3,7 @@ import boom4 from './assets/audio/boom4.mp3';
 import boom6 from './assets/audio/boom6.mp3';
 import boom8 from './assets/audio/boom8.mp3';
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://invasiongame.herokuapp.com/';
 
 const resToJson = res => res.json();
 
