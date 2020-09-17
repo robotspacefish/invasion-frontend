@@ -2,10 +2,14 @@ import UsersAdapter from './user/usersAdapter';
 import LeaderboardAdapter from './leaderboard/leaderboardAdapter';
 import Game from './game';
 import GameObject from './gameObject';
+import { buildBackground } from './background';
+
 import './styles/styles.css';
 
 const usersScoreDiv = document.getElementById('users-scores');
 const leaderboardDiv = document.getElementById('leaderboard-scores');
+
+const bgCtx = document.getElementById('screen-bg').getContext('2d');
 
 const GAME_WIDTH = 800, GAME_HEIGHT = 500;
 let game;
@@ -70,8 +74,7 @@ function start() {
   init();
   game.screens.title();
 
-}
 
-start();
+}
 
 export { GAME_WIDTH, GAME_HEIGHT, start, reset, handleFormSubmit, usersScoreDiv, leaderboardDiv };
