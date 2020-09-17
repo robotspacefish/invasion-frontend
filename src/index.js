@@ -36,6 +36,15 @@ window.addEventListener('keydown', (e) => {
   if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
 });
 
+window.addEventListener('load', () => {
+  start();
+
+  window.addEventListener('resize', () => {
+    game.resize();
+  }, false)
+
+})
+
 function init() {
   GameObject.all = [];
   game = new Game(GAME_WIDTH, GAME_HEIGHT);
@@ -72,6 +81,7 @@ function reset() {
 function start() {
   fetchData(leaderboardDiv, usersScoreDiv);
   init();
+  buildBackground(bgCtx)
   game.screens.title();
 
 
