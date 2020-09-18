@@ -55,7 +55,8 @@ window.addEventListener('load', () => {
 
 function init() {
   GameObject.all = [];
-  game = new Game();
+
+  game = new Game(gameWidth, gameHeight);
   game.mode = "title";
 }
 

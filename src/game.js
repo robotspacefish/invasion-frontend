@@ -2,14 +2,14 @@ import Player from './player';
 import Enemy from './enemy';
 import GameObject from './gameObject';
 import Screen from './Screen';
-import { GAME_WIDTH, GAME_HEIGHT } from './index';
+
 
 export default class Game {
-  constructor() {
+  constructor(width, height) {
     this.container = document.getElementById('game-content');
     this.ctx = document.getElementById('screen').getContext('2d');
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    this.width = width;
+    this.height = height;
     this.ctx.canvas.width = this.width;
     this.ctx.canvas.height = this.height;
 
