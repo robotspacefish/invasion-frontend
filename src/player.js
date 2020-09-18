@@ -28,9 +28,9 @@ export default class Player extends GameObject {
       sourceWidth: 218,
       sourceHeight: 164,
       x: (gameWidth / 2) - (218 / 2 / 2),
-      y: gameHeight - 180,
-      width: 218,
-      height: 164
+      y: gameHeight - 164 / 2 - 60,
+      width: 218 / 2,
+      height: 164 / 2
     }
   }
 

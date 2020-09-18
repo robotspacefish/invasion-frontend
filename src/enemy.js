@@ -23,8 +23,8 @@ export default class Enemy extends GameObject {
       sourceHeight: 169,
       x: spawnX,
       y: -170,
-      width: 218,
-      height: 169
+      width: 218 / 2,
+      height: 169 / 2
     }
   }
 
