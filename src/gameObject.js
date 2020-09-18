@@ -65,7 +65,7 @@ export default class GameObject {
   }
 
   update() {
-    // this.checkForCollision();
+    this.checkForCollision();
   }
 
   draw(ctx) {
