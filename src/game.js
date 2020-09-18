@@ -93,45 +93,17 @@ export default class Game {
   draw() {
     if (this.mode === 'play') {
       this.ctx.clearRect(0, 0, this.width, this.height);
+
       GameObject.all.forEach(obj => obj.draw(this.ctx));
+
+      this.renderUI();
     }
-
   }
 
-  static renderScoreUI(points) {
-    document.getElementById('score').innerHTML = `Score: ${points}`;
+  renderUI() {
+    this.ctx.fillStyle = 'white';
+    this.ctx.font = '20px monospace'
+    this.ctx.fillText(`Score: ${this.player.points} Wave: ${this.wave}`, 5, this.height - 10)
+    this.ctx.fillText(`P-Bombs: ${this.pBombs}`, this.width - 125, this.height - 10)
   }
-
-  renderWaveUI() {
-    document.getElementById('wave').innerHTML = `Wave: ${this.wave}`;
-  }
-
-  // renderCanvas() {
-
-  //   this.container.innerHTML = `
-  //     <div class="ui">
-  //       <div id="score-bar">
-  //         <div id="score">Score: ${this.player.points}</div>
-  //         <div id="wave">Wave: </div>
-  //       </div>
-  //     </div>
-  //     <div id="screen-bg">
-  //       <canvas id="screen" width="${GAME_WIDTH}" height="${GAME_HEIGHT}"></canvas>
-  //     </div>
-  //   `;
-
-  //   this.setContext();
-  // }
-
-  // createCanvas() {
-  //   const canvas = document.createElement('canvas');
-  //   canvas.id = 'screen';
-  //   canvas.width = this.width;
-  //   canvas.height = this.height;
-  //   return canvas.getContext('2d');
-  // }
-
-  // setContext() {
-  //   this.ctx = document.getElementById('screen').getContext('2d');
-  // }
 }
