@@ -13,13 +13,13 @@ export default class Screen {
   }
 
   static hideCanvas(canvas) {
-    container.style.display = 'initial';
+    container.style.display = 'flex';
     canvas.style.display = 'none';
   }
 
   static showCanvas(canvas) {
     container.style.display = 'none';
-    canvas.style.display = 'initial';
+    canvas.style.display = 'block';
   }
 
   static renderControlInstructions() {
