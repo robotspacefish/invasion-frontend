@@ -37,7 +37,7 @@ window.addEventListener('keydown', (e) => {
   }
 
   console.log(game.mode)
-  // if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
+  if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
 });
 
 window.addEventListener('load', () => {
