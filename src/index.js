@@ -6,6 +6,10 @@ import { buildBackground } from './background';
 import Screen from './Screen';
 import './styles/styles.css';
 
+let isMobile = !!(navigator.userAgent.toLowerCase().match(/mobile/i) || navigator.userAgent.toLowerCase().match(/tablet/i) || navigator.userAgent.toLowerCase().match(/android/i) || navigator.userAgent.toLowerCase().match(/iphone/i) || navigator.userAgent.toLowerCase().match(/ipad/i));
+
+let gameHeight = window.innerHeight, gameWidth = window.innerWidth;
+
 const usersScoreDiv = document.getElementById('users-scores');
 const leaderboardDiv = document.getElementById('leaderboard-scores');
 
