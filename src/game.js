@@ -29,11 +29,17 @@ export default class Game {
     return 5;
   }
 
-  static spawnEnemyWave() {
+  get gapSize() {
+    // 545 = 5 enemys at 218px/2 width
+    // add 11px to the end to get last enemy to reach edge
+    return Math.floor((this.width - 545) / 5) + 11
+  }
+
+  static spawnEnemyWave(game) {
     let spawnX = 5;
     while (GameObject.enemyCount < Game.enemiesOnScreenLimit) {
       const enemy = Enemy.spawn(spawnX);
-      spawnX += enemy.spriteObj.width + 60;
+      spawnX += enemy.spriteObj.width + game.gapSize;
     }
   }
 
@@ -71,7 +77,7 @@ export default class Game {
   update() {
     if (this.mode === "play") {
       if (GameObject.enemyCount === 0) {
-        Game.spawnEnemyWave();
+        Game.spawnEnemyWave(this);
         this.wave++;
         // this.renderWaveUI();
       }
