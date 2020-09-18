@@ -3,16 +3,16 @@ import LeaderboardAdapter from './leaderboard/leaderboardAdapter';
 import Game from './game';
 import GameObject from './gameObject';
 import { buildBackground } from './background';
-
+import Screen from './Screen';
 import './styles/styles.css';
 
 const usersScoreDiv = document.getElementById('users-scores');
 const leaderboardDiv = document.getElementById('leaderboard-scores');
 
 const bgCtx = document.getElementById('screen-bg').getContext('2d');
-
 const GAME_WIDTH = 800, GAME_HEIGHT = 500;
 let game;
+let RAF;
 
 function handleFormSubmit(e, score) {
   e.preventDefault();
@@ -21,10 +21,12 @@ function handleFormSubmit(e, score) {
 }
 
 window.addEventListener('keydown', (e) => {
+  console.log(game.mode)
   if (game.mode === "title") {
     if (e.code === "Space") {
       game.mode = "play";
-      game.renderCanvas();
+      RAF = requestAnimationFrame(gameLoop);
+      Screen.showCanvas(game.ctx.canvas);
     }
   } else if (game.mode === "play") {
     if (!e.repeat) {
@@ -33,7 +35,9 @@ window.addEventListener('keydown', (e) => {
       if (e.code === "Space") game.player.shoot = true;
     }
   }
-  if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
+
+  console.log(game.mode)
+  // if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
 });
 
 window.addEventListener('load', () => {
@@ -49,7 +53,6 @@ function init() {
   GameObject.all = [];
   game = new Game(GAME_WIDTH, GAME_HEIGHT);
   game.mode = "title";
-  requestAnimationFrame(gameLoop);
 }
 
 function fetchData(leaderboardDiv, usersScoreDiv) {
@@ -59,16 +62,22 @@ function fetchData(leaderboardDiv, usersScoreDiv) {
 
 function gameLoop() {
   // continues to loop if mode !== gameOver
-
+  // if (game.mode === 'title') {
+  //   cancelAnimationFrame(RAF);
+  //   // Screen.drawTitle();
+  //   Screen.hideCanvas(game.ctx.canvas);
+  // }
   if (game.mode === "gameOver") {
+    Screen.hideCanvas(game.ctx.canvas);
+    cancelAnimationFrame(RAF);
     game.screens.gameOver()
   } else {
     if (game.mode === "play") {
       game.draw();
       game.update();
+      RAF = requestAnimationFrame(gameLoop);
     }
 
-    requestAnimationFrame(gameLoop);
   }
 }
 
@@ -79,7 +88,7 @@ function reset() {
 }
 
 function start() {
-  fetchData(leaderboardDiv, usersScoreDiv);
+  // fetchData(leaderboardDiv, usersScoreDiv);
   init();
   buildBackground(bgCtx)
   game.screens.title();

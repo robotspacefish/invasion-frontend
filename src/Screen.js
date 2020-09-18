@@ -1,14 +1,25 @@
 import { reset, handleFormSubmit } from './index';
 
+const container = document.getElementById('text-screen');
+
 export default class Screen {
-  static renderTitle(container) {
+  static renderTitle() {
+
     container.innerHTML = `
-      <div id="title-screen">
         <h1 id="title">Invasion!</h1>
         <p>Press [SPACEBAR] to Start<p>
         ${Screen.renderControlInstructions()}
-      </div>
-    `
+    `;
+  }
+
+  static hideCanvas(canvas) {
+    container.style.display = 'initial';
+    canvas.style.display = 'none';
+  }
+
+  static showCanvas(canvas) {
+    container.style.display = 'none';
+    canvas.style.display = 'initial';
   }
 
   static renderControlInstructions() {
@@ -23,7 +34,7 @@ export default class Screen {
     `
   }
 
-  static renderGameOver(container, finalScore, finalWave) {
+  static renderGameOver(finalScore, finalWave) {
     container.innerHTML = `
       <div id="game-over-screen">
         <h1>Game Over!</h1>
