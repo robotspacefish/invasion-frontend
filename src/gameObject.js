@@ -19,9 +19,9 @@ export default class GameObject {
     return GameObject.all.filter(o => o.type === "enemy").length;
   }
 
-  outOfBounds() {
+  outOfBounds(gameHeight) {
     const { y, height } = this.spriteObj;
-    return y < 0 || y + height > GAME_HEIGHT;
+    return y < 0 || y + height > gameHeight;
   }
 
   hasCollided(obj) {
@@ -65,7 +65,7 @@ export default class GameObject {
   }
 
   update() {
-    this.checkForCollision();
+    // this.checkForCollision();
   }
 
   draw(ctx) {

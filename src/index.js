@@ -10,7 +10,6 @@ const usersScoreDiv = document.getElementById('users-scores');
 const leaderboardDiv = document.getElementById('leaderboard-scores');
 
 const bgCtx = document.getElementById('screen-bg').getContext('2d');
-const GAME_WIDTH = 800, GAME_HEIGHT = 500;
 let game;
 let RAF;
 
@@ -42,6 +41,7 @@ window.addEventListener('keydown', (e) => {
 
 window.addEventListener('load', () => {
   start();
+  game.resize();
 
   window.addEventListener('resize', () => {
     game.resize();
@@ -51,7 +51,7 @@ window.addEventListener('load', () => {
 
 function init() {
   GameObject.all = [];
-  game = new Game(GAME_WIDTH, GAME_HEIGHT);
+  game = new Game();
   game.mode = "title";
 }
 
@@ -91,9 +91,10 @@ function start() {
   // fetchData(leaderboardDiv, usersScoreDiv);
   init();
   buildBackground(bgCtx)
+  Screen.hideCanvas(game.ctx.canvas);
   game.screens.title();
 
 
 }
 
-export { GAME_WIDTH, GAME_HEIGHT, start, reset, handleFormSubmit, usersScoreDiv, leaderboardDiv };
+export { start, reset, handleFormSubmit, usersScoreDiv, leaderboardDiv };

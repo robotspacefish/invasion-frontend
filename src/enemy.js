@@ -23,8 +23,8 @@ export default class Enemy extends GameObject {
       sourceHeight: 169,
       x: spawnX,
       y: -170,
-      width: 218 / 2,
-      height: 169 / 2
+      width: 218,
+      height: 169
     }
   }
 
@@ -49,8 +49,8 @@ export default class Enemy extends GameObject {
     GameObject.remove(this);
   }
 
-  update() {
-    super.update();
+  update(gameWidth, gameHeight) {
+    super.update(gameWidth, gameHeight);
 
     if (this.collided) {
       this.handleCollision();
@@ -65,7 +65,7 @@ export default class Enemy extends GameObject {
 
     this.move();
 
-    if (this.spriteObj.y > GAME_HEIGHT + 10) GameObject.remove(this);
+    if (this.spriteObj.y > gameHeight + 10) GameObject.remove(this);
   }
 
   static spawn(spawnX) {

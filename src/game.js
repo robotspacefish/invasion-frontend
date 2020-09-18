@@ -5,21 +5,25 @@ import Screen from './Screen';
 import { GAME_WIDTH, GAME_HEIGHT } from './index';
 
 export default class Game {
-  constructor(width, height) {
+  constructor() {
     this.container = document.getElementById('game-content');
     this.ctx = document.getElementById('screen').getContext('2d');
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+    this.ctx.canvas.width = this.width;
+    this.ctx.canvas.height = this.height;
 
-    this.ctx.canvas.style.display = 'none'; // hide canvas
-    this.width = width;
-    this.height = height;
-
-    this.player = new Player();
+    this.player = new Player(this.width, this.height);
 
     this.mode = 'title';
     this.screens = this.initScreens();
     this.shouldUpdateUI = false;
     this.wave = 0;
   }
+
+  // get maxWidth () {
+  //   return window
+  // }
 
   static get enemiesOnScreenLimit() {
     return 5;
@@ -33,8 +37,7 @@ export default class Game {
     }
   }
 
-  resize(containerId) {
-    // const container = document.getElementById(containerId);
+  resize() {
     let cWidth = window.innerWidth,
       cHeight = window.innerHeight;
 
@@ -42,13 +45,13 @@ export default class Game {
       browserWindowRatio = cWidth / cHeight;
 
     if (browserWindowRatio > nativeRatio) {
-      cWidth = (cHeight * 7) * nativeRatio;
+      cWidth = cHeight * nativeRatio;
     } else {
-      cHeight = (cWidth * 7) / nativeRatio
+      cHeight = cWidth / nativeRatio
     }
 
-    this.ctx.canvas.width = `${cWidth}px`;
-    this.ctx.canvas.height = `${cHeight}px`;
+    this.ctx.canvas.style.width = `${cWidth}px`;
+    this.ctx.canvas.style.height = `${cHeight}px`;
   }
 
   initScreens() {
@@ -73,7 +76,7 @@ export default class Game {
         // this.renderWaveUI();
       }
 
-      GameObject.all.forEach(obj => obj.update());
+      GameObject.all.forEach(obj => obj.update(this.width, this.height));
 
       if (this.player.isHit) this.gameOver();
     }
@@ -81,9 +84,8 @@ export default class Game {
 
   draw() {
     if (this.mode === 'play') {
-      this.ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+      this.ctx.clearRect(0, 0, this.width, this.height);
       GameObject.all.forEach(obj => obj.draw(this.ctx));
-
     }
 
   }
