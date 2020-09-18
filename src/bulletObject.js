@@ -28,8 +28,8 @@ export default class BulletObject extends GameObject {
         sheetWidth: 228,
         sheetHeight: 533,
         spritesheet: waves2,
-        x: shooter.x + 228 / 2 - shooter.width,
-        y: 400
+        x: shooter.x + (228 / 2) - shooter.width, // 228/2 is half the bullet's width
+        y: shooter.y - 20
       }
       return new AnimatedSpriteObject(obj)
     } else if (this.type === "enemyBullet") {
