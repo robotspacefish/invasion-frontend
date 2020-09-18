@@ -51,9 +51,11 @@ export default class Game {
       browserWindowRatio = cWidth / cHeight;
 
     if (browserWindowRatio > nativeRatio) {
-      cWidth = cHeight * nativeRatio;
+      cHeight = Math.floor(cHeight * 0.9);
+      cWidth = Math.floor(cHeight * nativeRatio);
     } else {
-      cHeight = cWidth / nativeRatio
+      cWidth = Math.floor(cWidth * 0.9);
+      cHeight = Math.floor(cWidth / nativeRatio)
     }
 
     this.ctx.canvas.style.width = `${cWidth}px`;
