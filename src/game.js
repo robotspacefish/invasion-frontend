@@ -32,7 +32,7 @@ export default class Game {
   get gapSize() {
     // 545 = 5 enemys at 218px/2 width
     // add 11px to the end to get last enemy to reach edge
-    return Math.floor((this.width - 545) / 5) + 11
+    return Math.floor((this.width - 545) / 5) + 10
   }
 
   static spawnEnemyWave(game) {
