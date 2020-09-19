@@ -36,14 +36,10 @@ export default class GameObject {
     this.collided = true;
     obj.collided = true;
     const player = this.getPlayerObj();
-    if (this.type === "playerBullet") {
-      player.addPoint();
-      Game.renderScoreUI(player.points);
-    }
 
-    if (this.type === "player") {
-      player.isHit = true;
-    }
+    if (this.type === "playerBullet") player.addPoint();
+
+    if (this.type === "player") player.isHit = true;
   }
 
   getPlayerObj() {
