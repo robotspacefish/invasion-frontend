@@ -35,7 +35,7 @@ export default class Player extends GameObject {
   }
 
   static get friction() {
-    return 0.98; // slow player movement
+    return 0.75; // slow player movement
   }
 
   addPoint() {
