@@ -8,6 +8,7 @@ import './styles/styles.css';
 
 let isMobile = !!(navigator.userAgent.toLowerCase().match(/mobile/i) || navigator.userAgent.toLowerCase().match(/tablet/i) || navigator.userAgent.toLowerCase().match(/android/i) || navigator.userAgent.toLowerCase().match(/iphone/i) || navigator.userAgent.toLowerCase().match(/ipad/i));
 
+let highestScores;
 let gameHeight = 600, gameWidth = 800; // 4:3
 
 const usersScoreDiv = document.getElementById('users-scores');
@@ -93,9 +94,11 @@ function init() {
   game.mode = "title";
 }
 
-function fetchData(leaderboardDiv, usersScoreDiv) {
-  UsersAdapter.fetchUsers(usersScoreDiv);
-  LeaderboardAdapter.fetchLeaderboard(leaderboardDiv);
+function fetchData() {
+  LeaderboardAdapter.fetchLeaderboard().then((data) => {
+    highestScores = [...data.highestScoringUsers];
+
+  });
 }
 
 function gameLoop() {
@@ -108,7 +111,7 @@ function gameLoop() {
   if (game.mode === "gameOver") {
     Screen.hideCanvas(game.ctx.canvas);
     cancelAnimationFrame(RAF);
-    game.screens.gameOver()
+    game.screens.gameOver(highestScores)
   } else {
     if (game.mode === "play") {
       game.draw();
@@ -127,7 +130,7 @@ function reset() {
 }
 
 function start() {
-  // fetchData(leaderboardDiv, usersScoreDiv);
+  fetchData();
   init();
   buildBackground(bgCtx)
   Screen.hideCanvas(game.ctx.canvas);
