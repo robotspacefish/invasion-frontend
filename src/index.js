@@ -32,14 +32,23 @@ window.addEventListener('keydown', (e) => {
       Screen.showCanvas(game.ctx.canvas);
     }
   } else if (game.mode === "play") {
-    if (!e.repeat) {
-      if (e.key === 'ArrowRight') game.player.moveRight = true;
-      if (e.key === 'ArrowLeft') game.player.moveLeft = true;
-      if (e.code === "Space") game.player.shoot = true;
-    }
+    // if (!e.repeat) {
+    if (e.key === 'ArrowRight') game.player.moveRight = true;
+    if (e.key === 'ArrowLeft') game.player.moveLeft = true;
+    if (e.code === "Space") game.player.shoot = true;
+    // }
   }
 
-  console.log(game.mode)
+  if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
+});
+
+window.addEventListener('keyup', (e) => {
+  if (game.mode === "play") {
+    if (e.key === 'ArrowRight') game.player.moveRight = false;
+    if (e.key === 'ArrowLeft') game.player.moveLeft = false;
+    if (e.code === "Space") game.player.shoot = false;
+  }
+
   if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
 });
 
