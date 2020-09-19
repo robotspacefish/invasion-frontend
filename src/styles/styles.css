@@ -13,16 +13,13 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-  /* display: flex;
-  flex-direction: column;
-  min-height: 100vh; */
 }
 
 canvas {
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
 }
 
 #screen-bg {
@@ -30,6 +27,19 @@ canvas {
   width: 100%;
   height: 100%;
   background-color: black;
+}
+
+#ui {
+
+  z-index: 1500;
+  /* height: 50px; */
+  border: 2px solid white;
+
+}
+
+#screen {
+
+  border: 4px solid gray;
 }
 
 #text-screen {
