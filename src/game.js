@@ -100,6 +100,8 @@ export default class Game {
     this.ctx.fillStyle = 'white';
     this.ctx.font = '20px monospace'
     this.ctx.fillText(`Score: ${this.player.points} Wave: ${this.wave}`, 5, this.height - 10)
-    this.ctx.fillText(`P-Bombs: ${this.pBombs}`, this.width - 125, this.height - 10)
+
+
+    // this.ctx.fillText(`P-Bombs: ${this.pBombs}`, this.width - 125, this.height - 10)
   }
 }
