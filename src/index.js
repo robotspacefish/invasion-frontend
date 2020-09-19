@@ -9,6 +9,7 @@ import './styles/styles.css';
 let isMobile = !!(navigator.userAgent.toLowerCase().match(/mobile/i) || navigator.userAgent.toLowerCase().match(/tablet/i) || navigator.userAgent.toLowerCase().match(/android/i) || navigator.userAgent.toLowerCase().match(/iphone/i) || navigator.userAgent.toLowerCase().match(/ipad/i));
 
 let highestScores;
+
 let gameHeight = 600, gameWidth = 800; // 4:3
 
 const usersScoreDiv = document.getElementById('users-scores');
@@ -50,7 +51,7 @@ window.addEventListener('keydown', (e) => {
         game.player.isBarkCooldown = true;
         setTimeout(() => {
           game.player.isBarkCooldown = false;
-        }, 1000)
+        }, 1300)
       }
 
     }
