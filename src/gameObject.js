@@ -19,9 +19,9 @@ export default class GameObject {
     return GameObject.all.filter(o => o.type === "enemy").length;
   }
 
-  outOfBounds() {
+  outOfBounds(gameHeight) {
     const { y, height } = this.spriteObj;
-    return y < 0 || y + height > GAME_HEIGHT;
+    return y < 0 || y + height > gameHeight;
   }
 
   hasCollided(obj) {
@@ -36,14 +36,10 @@ export default class GameObject {
     this.collided = true;
     obj.collided = true;
     const player = this.getPlayerObj();
-    if (this.type === "playerBullet") {
-      player.addPoint();
-      Game.renderScoreUI(player.points);
-    }
 
-    if (this.type === "player") {
-      player.isHit = true;
-    }
+    if (this.type === "playerBullet") player.addPoint();
+
+    if (this.type === "player") player.isHit = true;
   }
 
   getPlayerObj() {
