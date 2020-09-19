@@ -19,11 +19,8 @@ export default class Game {
     this.screens = this.initScreens();
     this.shouldUpdateUI = false;
     this.wave = 0;
+    this.pBombs = 3; // TODO future feature
   }
-
-  // get maxWidth () {
-  //   return window
-  // }
 
   static get enemiesOnScreenLimit() {
     return 5;
@@ -81,7 +78,6 @@ export default class Game {
       if (GameObject.enemyCount === 0) {
         Game.spawnEnemyWave(this);
         this.wave++;
-        // this.renderWaveUI();
       }
 
       GameObject.all.forEach(obj => obj.update(this.width, this.height));

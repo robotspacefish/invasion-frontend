@@ -16,6 +16,7 @@ export default class Player extends GameObject {
     this.moveRight = false;
     this.shoot = false;
     this.shootSound = new Audio(bark);
+    this.pBombShoot = false; // TODO future feature
     this.type = "player";
     this.points = 0;
     this.isHit = false;
