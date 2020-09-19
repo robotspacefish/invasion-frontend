@@ -5,6 +5,33 @@
 
 ul {
   list-style: none;
+  padding: 0;
+}
+
+table {
+  max-width: 400px;
+  width: 100%;
+}
+
+thead {
+  font-size: 1.4em;
+}
+
+tbody {
+  font-size: 1.2em;
+}
+
+td {
+  text-align: center;
+  padding: 10px;
+}
+
+tbody td:nth-child(2) {
+  text-align: left;
+}
+
+#finals {
+  font-size: 1.5em;
 }
 
 body {
@@ -150,7 +177,7 @@ form div{
   flex-direction: column;
   justify-content: space-between;
   align-items: initial;
-  height: 80px;
+  margin: 40px 0;
 }
 
 .leaderboard,
