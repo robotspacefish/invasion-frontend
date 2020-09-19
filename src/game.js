@@ -103,9 +103,9 @@ export default class Game {
     this.ctx.font = '20px monospace'
     this.ctx.fillText(`Score: ${this.player.points} Wave: ${this.wave}`, 5, this.height - 10)
 
-    this.ctx.fillStyle = 'red';
 
     if (this.player.isBarkCooldown) {
+      this.ctx.fillStyle = 'red';
       const textWidth = this.ctx.measureText(cooldownText).width;
       this.ctx.fillText(cooldownText, this.width / 2 - textWidth / 2, this.height - 10)
     }
