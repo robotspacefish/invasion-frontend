@@ -3,6 +3,7 @@ import Enemy from './enemy';
 import GameObject from './gameObject';
 import Screen from './Screen';
 
+const cooldownText = '[COOLING DOWN]';
 
 export default class Game {
   constructor(width, height) {
@@ -20,6 +21,7 @@ export default class Game {
     this.shouldUpdateUI = false;
     this.wave = 0;
     this.pBombs = 3; // TODO future feature
+    this.isBarkCooldown = false;
   }
 
   static get enemiesOnScreenLimit() {
@@ -101,7 +103,12 @@ export default class Game {
     this.ctx.font = '20px monospace'
     this.ctx.fillText(`Score: ${this.player.points} Wave: ${this.wave}`, 5, this.height - 10)
 
+    this.ctx.fillStyle = 'red';
 
+    if (this.player.isBarkCooldown) {
+      const textWidth = this.ctx.measureText(cooldownText).width;
+      this.ctx.fillText(cooldownText, this.width / 2 - textWidth / 2, this.height - 10)
+    }
     // this.ctx.fillText(`P-Bombs: ${this.pBombs}`, this.width - 125, this.height - 10)
   }
 }

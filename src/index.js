@@ -43,7 +43,16 @@ window.addEventListener('keydown', (e) => {
     else if (e.keyCode == 38 || e.keyCode == 90 || e.keyCode == 87) game.player.pBombShoot = true; // TODO future feature
 
     // Space
-    else if (k === 32) game.player.shoot = true;
+    else if (k === 32) {
+      if (!game.player.isBarkCooldown) {
+        game.player.shoot = true;
+        game.player.isBarkCooldown = true;
+        setTimeout(() => {
+          game.player.isBarkCooldown = false;
+        }, 2000)
+      }
+
+    }
 
   }
   if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
