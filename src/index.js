@@ -49,7 +49,7 @@ window.addEventListener('keydown', (e) => {
         game.player.isBarkCooldown = true;
         setTimeout(() => {
           game.player.isBarkCooldown = false;
-        }, 2000)
+        }, 1000)
       }
 
     }
