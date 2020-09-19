@@ -64,7 +64,7 @@ export default class Game {
   initScreens() {
     return {
       title: () => Screen.renderTitle(),
-      gameOver: () => Screen.renderGameOver(this.player.points, this.wave)
+      gameOver: (highestScores) => Screen.renderGameOver(this.player.points, this.wave, highestScores)
     }
   }
 
