@@ -28,7 +28,7 @@ export default class Screen {
         <h3>Controls</h3>
         <ul>
           <li>Shoot - Spacebar</li>
-          <li>Move - Left/Right Arrows</li>
+          <li>Move - A/D or Q/D or Left/Right Arrows</li>
         <ul>
       </div>
     `

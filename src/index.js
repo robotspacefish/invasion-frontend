@@ -24,7 +24,6 @@ function handleFormSubmit(e, score) {
 }
 
 window.addEventListener('keydown', (e) => {
-  console.log(game.mode)
   if (game.mode === "title") {
     if (e.code === "Space") {
       game.mode = "play";
@@ -32,24 +31,40 @@ window.addEventListener('keydown', (e) => {
       Screen.showCanvas(game.ctx.canvas);
     }
   } else if (game.mode === "play") {
-    // if (!e.repeat) {
-    if (e.key === 'ArrowRight') game.player.moveRight = true;
-    if (e.key === 'ArrowLeft') game.player.moveLeft = true;
-    if (e.code === "Space") game.player.shoot = true;
-    // }
-  }
 
+    let k = e.keyCode;
+    // Right (right / D)
+    if (k === 39 || k === 68) game.player.moveRight = true;
+
+    // Left (left / A / Q)
+    else if (k === 37 || k === 65 || k === 81) game.player.moveLeft = true;
+
+    // Up (up / W / Z)
+    else if (e.keyCode == 38 || e.keyCode == 90 || e.keyCode == 87) game.player.pBombShoot = true; // TODO future feature
+
+    // Space
+    else if (k === 32) game.player.shoot = true;
+
+  }
   if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
 });
 
 window.addEventListener('keyup', (e) => {
   if (game.mode === "play") {
-    if (e.key === 'ArrowRight') game.player.moveRight = false;
-    if (e.key === 'ArrowLeft') game.player.moveLeft = false;
-    if (e.code === "Space") game.player.shoot = false;
-  }
+    let k = e.keyCode;
 
-  if (e.target.nodeName === "BODY") e.preventDefault(); // prevent scrolling browser
+    // Right (right / D)
+    if (k === 39 || k === 68) game.player.moveRight = false;
+
+    // Left (left / A / Q)
+    else if (k === 37 || k === 65 || k === 81) game.player.moveLeft = false;
+
+    // Up (up / W / Z)
+    else if (e.keyCode == 38 || e.keyCode == 90 || e.keyCode == 87) game.player.pBombShoot = false;
+
+    // Space
+    else if (k === 32) game.player.shoot = false;
+  }
 });
 
 window.addEventListener('load', () => {
