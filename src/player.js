@@ -59,31 +59,18 @@ export default class Player extends GameObject {
 
   move(gameWidth) {
     this.dx *= Player.friction;
+    if (this.moveLeft && !this.moveRight) this.dx -= this.acceleration;
+    if (this.moveRight && !this.moveLeft) this.dx += this.acceleration;
 
-    if (this.moveLeft) {
-      this.moveLeftAction();
-      this.moveLeft = false;
-    }
-
-    if (this.moveRight) {
-      this.moveRightAction();
-      this.moveRight = false;
-    }
+    // if (!this.moveRight && !this.moveLeft) this.dx = 0;
 
     // keep within speed limit
-    this.dx = mid(-this.dxMax, this.dx, this.dxMax);
+    // this.dx = (mid(-this.dxMax, this.dx, this.dxMax) * Player.friction);
 
     this.spriteObj.x += this.dx;
     this.keepInBounds(gameWidth);
   }
 
-  moveLeftAction() {
-    this.dx -= this.acceleration;
-  }
-
-  moveRightAction() {
-    this.dx += this.acceleration;
-  }
 
   shootAction() {
     const { x, y, width, height } = this.spriteObj, speed = 30;
