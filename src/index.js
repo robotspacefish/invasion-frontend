@@ -122,7 +122,8 @@ function gameLoop() {
 function reset() {
   init();
   game.mode = "play";
-  game.renderCanvas();
+  RAF = requestAnimationFrame(gameLoop);
+  Screen.showCanvas(game.ctx.canvas);
 }
 
 function start() {
