@@ -20,7 +20,6 @@ export default class Game {
     this.screens = this.initScreens();
     this.shouldUpdateUI = false;
     this.wave = 0;
-    this.pBombs = 3; // TODO future feature
     this.isBarkCooldown = false;
   }
 
@@ -72,6 +71,7 @@ export default class Game {
     const player = GameObject.all.find(o => o.type === "player");
 
     this.mode = "gameOver";
+    if (player.pBombIntervalId) player.clearPBombInterval();
     GameObject.remove(player);
   }
 

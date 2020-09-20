@@ -42,7 +42,7 @@ window.addEventListener('keydown', (e) => {
     else if (k === 37 || k === 65 || k === 81) game.player.moveLeft = true;
 
     // Up (up / W / Z)
-    else if (e.keyCode == 38 || e.keyCode == 90 || e.keyCode == 87) game.player.pBombShoot = true; // TODO future feature
+    else if ((e.keyCode == 38 || e.keyCode == 90 || e.keyCode == 87) && game.player.pBombs > 0 && !game.player.pBombActive) game.player.pBombShoot = true;
 
     // Space
     else if (k === 32) {
