@@ -30,6 +30,7 @@ export default class Screen {
         <ul>
           <li>Shoot - Spacebar</li>
           <li>Move - A/D or Q/D or Left/Right Arrows</li>
+          <li>Deploy P-Bomb - W or Z or Up Arrow</li>
         <ul>
       </div>
     `
