@@ -24,7 +24,7 @@
     "build": "webpack",
     "dev": "webpack-dev-server",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -b master -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "webpack": "^4.42.0"
