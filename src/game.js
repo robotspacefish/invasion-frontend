@@ -20,7 +20,6 @@ export default class Game {
     this.screens = this.initScreens();
     this.shouldUpdateUI = false;
     this.wave = 0;
-    this.pBombs = 3; // TODO future feature
     this.isBarkCooldown = false;
   }
 
@@ -72,6 +71,7 @@ export default class Game {
     const player = GameObject.all.find(o => o.type === "player");
 
     this.mode = "gameOver";
+    if (player.pBombIntervalId) player.clearPBombInterval();
     GameObject.remove(player);
   }
 
@@ -109,6 +109,15 @@ export default class Game {
       const textWidth = this.ctx.measureText(cooldownText).width;
       this.ctx.fillText(cooldownText, this.width / 2 - textWidth / 2, this.height - 10)
     }
-    // this.ctx.fillText(`P-Bombs: ${this.pBombs}`, this.width - 125, this.height - 10)
+    if (this.player.pBombActive) {
+      this.ctx.fillStyle = 'green';
+      this.ctx.fillText('P-Bomb Deployed', this.width - 200, this.height - 10)
+    } else {
+      if (this.player.pBombs === 0) this.ctx.fillStyle = 'red';
+      else this.ctx.fillStyle = 'white';
+
+      this.ctx.fillText(`P-Bombs: ${this.player.pBombs}`, this.width - 125, this.height - 10)
+
+    }
   }
 }

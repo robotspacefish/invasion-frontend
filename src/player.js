@@ -17,6 +17,10 @@ export default class Player extends GameObject {
     this.shoot = false;
     this.shootSound = new Audio(bark);
     this.pBombShoot = false; // TODO future feature
+    this.pBombActive = false;
+    this.pBomb;
+    this.pBombs = 3;
+    this.pBombIntervalId;
     this.type = "player";
     this.points = 0;
     this.isHit = false;
@@ -43,8 +47,8 @@ export default class Player extends GameObject {
     this.points++;
   }
 
-  update(gameWidth) {
-    super.update(gameWidth);
+  update(gameWidth, gameHeight) {
+    super.update(gameWidth, gameHeight);
 
     if (this.collided) {
       ExplosionObject.createExplosion(this);
@@ -55,7 +59,29 @@ export default class Player extends GameObject {
       this.shoot = false;
     }
 
+    if (this.pBombShoot) {
+      this.pBombShootAction(gameWidth, gameHeight);
+      this.pBombShoot = false;
+    }
+
+    if (this.pBombActive) {
+      if (this.pBomb.spriteObj.x + this.pBomb.spriteObj.width < 0) {
+        this.stopPBomb();
+      }
+    }
+
     this.move(gameWidth);
+  }
+
+  stopPBomb() {
+    GameObject.remove(this.pBomb);
+    this.pBomb = null;
+    this.clearPBombInterval();
+    this.pBombActive = false;
+  }
+
+  clearPBombInterval() {
+    clearInterval(this.pBombIntervalId);
   }
 
   move(gameWidth) {
@@ -69,7 +95,8 @@ export default class Player extends GameObject {
     // this.dx = (mid(-this.dxMax, this.dx, this.dxMax) * Player.friction);
 
     this.spriteObj.x += this.dx;
-    this.keepInBounds(gameWidth);
+
+    if (this.type !== "pBomb") this.keepInBounds(gameWidth);
   }
 
 
@@ -77,6 +104,29 @@ export default class Player extends GameObject {
     const { x, y, width, height } = this.spriteObj, speed = 30;
     new BulletObject("playerBullet", speed, { x, y, width, height });
     this.shootSound.play();
+  }
+
+  pBombShootAction(gameWidth, gameHeight) {
+    // create
+    this.pBombs--;
+    this.pBomb = new Player(gameWidth, gameHeight);
+    this.pBomb.spriteObj.sourceX = 224;
+    this.pBomb.spriteObj.sourceWidth = 219;
+    this.pBomb.spriteObj.sourceHeight = 157;
+    this.pBomb.spriteObj.x = gameWidth + 219;
+    this.pBomb.spriteObj.y = gameHeight - 157 / 2 - 30;
+    this.pBomb.spriteObj.width = 219 / 2;
+    this.pBomb.spriteObj.height = 157 / 2;
+    this.pBombActive = true;
+    this.pBomb.moveLeft = true;
+    this.pBomb.type = 'pBomb';
+
+    // shoot
+    this.pBombIntervalId = setInterval(() => {
+      console.log('shoot')
+      const { x, y, width, height } = this.pBomb.spriteObj, speed = 30;
+      new BulletObject("playerBullet", speed, { x, y, width, height });
+    }, 300)
   }
 
   keepInBounds(gameWidth) {
