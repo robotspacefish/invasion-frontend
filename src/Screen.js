@@ -8,6 +8,7 @@ export default class Screen {
     container.innerHTML = `
         <h1 id="title">Invasion!</h1>
         <p>Press [SPACEBAR] to Start<p>
+        <p>(This game is meant to be played on a desktop)</p>
         ${Screen.renderControlInstructions()}
     `;
   }
