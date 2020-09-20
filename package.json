@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "repository": "git@github.com:robotspacefish/invasion.git",
+  "homepage": "https://robotspacefish.dev/invasion-frontend/",
+  "repository": "git@github.com:robotspacefish/invasion-frontend.git",
   "author": "robotspacefish <9095316+robotspacefish@users.noreply.github.com>",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
