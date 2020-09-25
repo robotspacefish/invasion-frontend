@@ -210,11 +210,13 @@ footer {
 }
 
 .credits {
-  text-align: left;
-  margin: 20px;
+  margin-top: 100px;
+  font-size: 0.8em;
 }
 
-.credits p {
+
+.credits a {
+  color: white;
   font-weight: bold;
   text-decoration: underline;
 }
